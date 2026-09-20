@@ -7,7 +7,6 @@ type ToolMeta = {
   tags: string[]
   icon: React.ReactNode
   iconBg: string
-  offset?: string
 }
 
 const TOOLS: ToolMeta[] = [
@@ -15,7 +14,6 @@ const TOOLS: ToolMeta[] = [
     key: "Frontend",
     tags: ["React", "TypeScript", "HTML", "CSS", "Tailwind"],
     iconBg: "bg-brand-secondary/20 text-brand-secondary",
-    offset: "lg:mt-10",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
         <path
@@ -47,7 +45,6 @@ const TOOLS: ToolMeta[] = [
     key: "Workflow",
     tags: ["Scrum", "Agile", "Git"],
     iconBg: "bg-brand-primary/20 text-brand-primary",
-    offset: "lg:mt-16",
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
         <path d="M6 18 18 6M18 6H9m9 0v9" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
@@ -98,7 +95,7 @@ export default function ToolsSection() {
             return (
               <div
                 key={tool.key}
-                className={`rounded-2xl border border-ink/5 bg-paper p-6 text-ink shadow-[0_10px_40px_-15px_rgba(0,0,0,0.6)] ${tool.offset ?? ""}`}
+                className="rounded-2xl border border-ink/5 bg-paper p-6 text-ink shadow-[0_10px_40px_-15px_rgba(0,0,0,0.6)]"
               >
                 <div className="flex items-start justify-between">
                   <span className={`flex h-9 w-9 items-center justify-center rounded-lg ${tool.iconBg}`}>
