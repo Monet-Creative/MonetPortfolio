@@ -1,20 +1,33 @@
 import { useLanguage } from "../i18n"
 
-type CardKey = "github" | "linkedin" | "email"
+type CardKey = "whatsapp" | "github" | "email"
 
 type CardMeta = {
   key: CardKey
   label: string
-  href: string
+  href?: string
+  text?: string
   icon: React.ReactNode
   iconBg: string
 }
 
 const CARDS: CardMeta[] = [
   {
+    key: "whatsapp",
+    label: "WHATSAPP",
+    href: "https://wa.me/5524981297207",
+    text: "(24) 98129-7207",
+    iconBg: "bg-[#25D366]",
+    icon: (
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
+        <path d="M12.04 2a9.9 9.9 0 0 0-8.45 15.07L2 22l5.08-1.33A9.9 9.9 0 1 0 12.04 2Zm0 18.1a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.01.79.8-2.94-.2-.31a8.2 8.2 0 1 1 6.89 3.78Zm4.5-6.14c-.25-.12-1.46-.72-1.69-.8-.22-.08-.39-.12-.55.12-.16.25-.63.8-.78.96-.14.17-.29.19-.53.06a6.7 6.7 0 0 1-3.33-2.9c-.25-.43.25-.4.72-1.33.08-.16.04-.3-.02-.42-.06-.12-.55-1.33-.76-1.82-.2-.48-.4-.41-.55-.42h-.47c-.16 0-.43.06-.65.3-.22.25-.86.84-.86 2.05s.88 2.38 1 2.55c.12.16 1.73 2.64 4.2 3.7 1.57.68 2.19.74 2.98.62.48-.07 1.46-.6 1.67-1.17.2-.58.2-1.07.14-1.18-.06-.1-.22-.16-.47-.28Z" />
+      </svg>
+    ),
+  },
+  {
     key: "github",
     label: "GITHUB",
-    href: "#",
+    href: "https://github.com/Monet-Creative",
     iconBg: "bg-black",
     icon: (
       <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff">
@@ -23,20 +36,9 @@ const CARDS: CardMeta[] = [
     ),
   },
   {
-    key: "linkedin",
-    label: "LINKEDIN",
-    href: "#",
-    iconBg: "bg-[#0A66C2]",
-    icon: (
-      <svg width="16" height="16" viewBox="0 0 24 24" fill="#fff">
-        <path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.6 0 4.27 2.37 4.27 5.46zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12M7.12 20.45H3.56V9h3.56z" />
-      </svg>
-    ),
-  },
-  {
     key: "email",
     label: "EMAIL",
-    href: "#contato",
+    text: "contato.monetcreative@gmail.com",
     iconBg: "bg-linear-to-br from-brand-primary to-brand-secondary",
     icon: (
       <svg width="17" height="17" viewBox="0 0 24 24" fill="none">
@@ -69,27 +71,25 @@ export default function Contact() {
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
           {CARDS.map((card) => {
             const copy = t.contact.cards[card.key]
-            return (
-              <a
-                key={card.key}
-                href={card.href}
-                className="group relative rounded-2xl bg-paper/95 p-6 text-ink transition-transform hover:-translate-y-1"
-              >
-                <svg
-                  width="14"
-                  height="14"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  className="absolute right-5 top-5 text-ink/30"
-                >
-                  <path
-                    d="M7 17 17 7M17 7H9m8 0v8"
-                    stroke="currentColor"
-                    strokeWidth="1.6"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </svg>
+            const body = (
+              <>
+                {card.href && (
+                  <svg
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    className="absolute right-5 top-5 text-ink/30"
+                  >
+                    <path
+                      d="M7 17 17 7M17 7H9m8 0v8"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                )}
 
                 <span className={`flex h-10 w-10 items-center justify-center rounded-xl ${card.iconBg}`}>
                   {card.icon}
@@ -99,8 +99,26 @@ export default function Contact() {
                   {card.label}
                 </span>
                 <span className="mt-1 block text-lg font-semibold">{copy.title}</span>
-                <span className="mt-1 block text-sm text-ink/55">{copy.description}</span>
+                <span className={`mt-1 block text-sm ${card.text ? "select-text break-all font-medium text-ink" : "text-ink/55"}`}>
+                  {card.text ?? copy.description}
+                </span>
+              </>
+            )
+
+            return card.href ? (
+              <a
+                key={card.key}
+                href={card.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group relative rounded-2xl bg-paper/95 p-6 text-ink transition-transform hover:-translate-y-1"
+              >
+                {body}
               </a>
+            ) : (
+              <div key={card.key} className="relative rounded-2xl bg-paper/95 p-6 text-ink">
+                {body}
+              </div>
             )
           })}
         </div>

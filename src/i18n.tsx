@@ -17,6 +17,11 @@ type ContactCardItem = {
   description: string
 }
 
+type FaqItem = {
+  q: string
+  a: string
+}
+
 type Dictionary = {
   nav: {
     inicio: string
@@ -45,14 +50,20 @@ type Dictionary = {
     subtitle: string
     items: Record<"Frontend" | "Databases" | "Backend" | "Workflow" | "Development" | "Tools", ToolItem>
   }
+  faq: {
+    eyebrow: string
+    headingPrefix: string
+    headingGradient: string
+    items: FaqItem[]
+  }
   contact: {
     eyebrow: string
     headingPrefix: string
     headingGradient: string
     subtitle: string
     cards: {
+      whatsapp: ContactCardItem
       github: ContactCardItem
-      linkedin: ContactCardItem
       email: ContactCardItem
     }
   }
@@ -126,14 +137,53 @@ const dictionaries: Record<Lang, Dictionary> = {
         },
       },
     },
+    faq: {
+      eyebrow: "FAQ",
+      headingPrefix: "Perguntas",
+      headingGradient: "frequentes.",
+      items: [
+        {
+          q: "Quanto tempo leva para o projeto ficar pronto?",
+          a: "O prazo varia conforme a complexidade. Landing pages costumam levar entre 3 e 7 dias úteis, enquanto sites institucionais ou sistemas sob medida têm prazos definidos após o briefing inicial e alinhamento dos requisitos.",
+        },
+        {
+          q: "Como funciona o processo de desenvolvimento?",
+          a: "Nosso processo é dividido em quatro etapas simples: alinhamento inicial para entender suas necessidades, criação e aprovação do layout, desenvolvimento técnico com testes rigorosos, e publicação final com entrega dos acessos.",
+        },
+        {
+          q: "O site funciona perfeitamente em celulares e tablets?",
+          a: "Sim. Todos os nossos projetos são 100% responsivos, leves e otimizados para carregar rápido e oferecer uma ótima experiência em qualquer tela ou dispositivo.",
+        },
+        {
+          q: "Terei custos adicionais após a entrega?",
+          a: "O desenvolvimento é pago uma única vez. Custos recorrentes normais da internet incluem apenas o registro do domínio (anual) e a hospedagem (mensal/anual), e nós orientamos você em toda essa configuração.",
+        },
+        {
+          q: "O site ou sistema será totalmente meu?",
+          a: "Sim. Após a finalização e quitação do projeto, todos os acessos, arquivos, banco de dados e direitos pertencem integralmente a você ou à sua empresa.",
+        },
+        {
+          q: "Consigo atualizar o conteúdo do site por conta própria?",
+          a: "Sim. Estruturamos a solução para que você tenha autonomia para alterar textos, fotos e informações básicas com facilidade, sem depender de suporte técnico para ajustes do dia a dia.",
+        },
+        {
+          q: "E se eu encontrar algum erro ou precisar de suporte após o lançamento?",
+          a: "Oferecemos um período de garantia pós-entrega para correção de qualquer instabilidade ou ajuste técnico, além de opções de planos contínuos de suporte e manutenção se você preferir.",
+        },
+        {
+          q: "Como solicito um orçamento?",
+          a: "Basta clicar no botão de contato, nos enviar uma mensagem no WhatsApp ou preencher o formulário explicando sua ideia. Retornamos rapidamente com uma proposta detalhada e sob medida para o seu caso.",
+        },
+      ],
+    },
     contact: {
       eyebrow: "Contato",
       headingPrefix: "Vamos construir algo",
       headingGradient: "significativo.",
       subtitle: "Tem um projeto, uma oportunidade ou uma ideia pra conversar? Vamos adorar ouvir você.",
       cards: {
+        whatsapp: { title: "WhatsApp", description: "Fale com a gente agora." },
         github: { title: "GitHub", description: "Veja nossos projetos, contribuições e código." },
-        linkedin: { title: "LinkedIn", description: "Conecte-se e acompanhe nossos projetos." },
         email: { title: "Email", description: "Envie uma mensagem - vamos adorar ouvir você." },
       },
     },
@@ -205,14 +255,53 @@ const dictionaries: Record<Lang, Dictionary> = {
         },
       },
     },
+    faq: {
+      eyebrow: "FAQ",
+      headingPrefix: "Frequently asked",
+      headingGradient: "questions.",
+      items: [
+        {
+          q: "How long does it take to finish a project?",
+          a: "Timelines vary with complexity. Landing pages usually take 3 to 7 business days, while corporate sites and custom systems get a timeline after the initial briefing and requirements alignment.",
+        },
+        {
+          q: "How does the development process work?",
+          a: "Our process has four simple steps: an initial alignment to understand your needs, layout creation and approval, technical development with rigorous testing, and final publication with delivery of all access.",
+        },
+        {
+          q: "Does the site work perfectly on phones and tablets?",
+          a: "Yes. All our projects are 100% responsive, lightweight and optimized to load fast and deliver a great experience on any screen or device.",
+        },
+        {
+          q: "Will I have additional costs after delivery?",
+          a: "Development is paid once. Normal recurring internet costs only include the domain registration (yearly) and hosting (monthly/yearly), and we guide you through the whole setup.",
+        },
+        {
+          q: "Will the site or system be fully mine?",
+          a: "Yes. Once the project is completed and paid, all access, files, databases and rights belong entirely to you or your company.",
+        },
+        {
+          q: "Can I update the site content on my own?",
+          a: "Yes. We build the solution so you can easily change texts, photos and basic information, without relying on technical support for day-to-day adjustments.",
+        },
+        {
+          q: "What if I find a bug or need support after launch?",
+          a: "We offer a post-delivery warranty period to fix any instability or technical adjustment, plus ongoing support and maintenance plans if you prefer.",
+        },
+        {
+          q: "How do I request a quote?",
+          a: "Just click the contact button, message us on WhatsApp or fill out the form describing your idea. We quickly get back with a detailed proposal tailored to your case.",
+        },
+      ],
+    },
     contact: {
       eyebrow: "Contact",
       headingPrefix: "Let's build something",
       headingGradient: "meaningful.",
       subtitle: "Have a project, an opportunity or an idea to talk about? We'd love to hear from you.",
       cards: {
+        whatsapp: { title: "WhatsApp", description: "Talk to us right now." },
         github: { title: "GitHub", description: "See our projects, contributions and code." },
-        linkedin: { title: "LinkedIn", description: "Connect with us and follow our projects." },
         email: { title: "Email", description: "Send a message - we'd love to hear from you." },
       },
     },
