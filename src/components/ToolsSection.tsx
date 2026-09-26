@@ -37,7 +37,7 @@ const TOOLS: ToolMeta[] = [
   },
   {
     key: "Backend",
-    tags: ["Node.js", "Python", "Elixir"],
+    tags: ["Node.js", "Python"],
     iconBg: "bg-brand-primary/20 text-brand-primary",
     icon: <span className="font-mono text-sm font-bold">{"{}"}</span>,
   },
@@ -63,7 +63,7 @@ const TOOLS: ToolMeta[] = [
   },
   {
     key: "Tools",
-    tags: ["Git", "GitHub", "VS Code", "Postman"],
+    tags: ["Git", "GitHub", "VS Code"],
     iconBg: "bg-brand-primary/20 text-brand-primary",
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none">

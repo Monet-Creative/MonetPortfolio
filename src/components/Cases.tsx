@@ -1,12 +1,14 @@
 import { useLanguage } from "../i18n"
+import aviatorImage from "../assets/AviatorImage.jpg"
+import gamingCodeImage from "../assets/GamingCodeImage.jpg"
+import pokemonImage from "../assets/PokemonImage.jpg"
 
-const CARD_STYLES = [
-  "bg-linear-to-br from-white to-pink-100 text-black",
-  "bg-linear-to-br from-neutral-800 to-black text-paper",
-  "bg-linear-to-br from-emerald-950 to-black text-paper",
-  "bg-linear-to-br from-brand-secondary to-blue-950 text-paper",
-  "bg-linear-to-br from-neutral-100 to-white text-black",
-  "bg-linear-to-br from-brand-primary/80 to-neutral-900 text-paper",
+const CASE_IMAGES = [aviatorImage, gamingCodeImage, pokemonImage]
+
+const CASE_LINKS = [
+  "https://lpaviatorinfo.pages.dev/",
+  "https://gaming-code.vercel.app/pg-home.html",
+  "https://desafio-treinamento-front-fabrica.vercel.app/battlePage.html",
 ]
 
 export default function Cases() {
@@ -21,15 +23,24 @@ export default function Cases() {
 
         <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {t.cases.items.map((item, i) => (
-            <div
+            <a
               key={item.title}
-              className={`group relative flex aspect-4/3 flex-col justify-end overflow-hidden rounded-xl p-6 transition-transform duration-300 hover:-translate-y-1 ${CARD_STYLES[i]}`}
+              href={CASE_LINKS[i]}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative flex aspect-4/3 flex-col justify-end overflow-hidden rounded-xl p-6 text-paper transition-transform duration-300 hover:-translate-y-1"
             >
-              <span className="text-xs font-medium uppercase tracking-wider opacity-60">
+              <img
+                src={CASE_IMAGES[i]}
+                alt={item.title}
+                className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/20 to-transparent" />
+              <span className="relative z-10 text-xs font-medium uppercase tracking-wider opacity-80">
                 {item.tag}
               </span>
-              <p className="mt-2 text-lg font-semibold leading-snug">{item.title}</p>
-            </div>
+              <p className="relative z-10 mt-2 text-lg font-semibold leading-snug">{item.title}</p>
+            </a>
           ))}
         </div>
 

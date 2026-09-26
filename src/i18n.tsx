@@ -96,12 +96,9 @@ const dictionaries: Record<Lang, Dictionary> = {
       heading: "Casos de sucesso",
       link: "Confira nossos projetos →",
       items: [
-        { title: "Um parceiro técnico que reduz o seu risco, não a sua margem", tag: "E-commerce" },
-        { title: "Cavland", tag: "Branding & Site" },
-        { title: "Ecossistema 4.0", tag: "Plataforma" },
-        { title: "Pate Nicolini", tag: "Institucional" },
-        { title: "Ajudo adultos no desenvolvimento de relacionamentos mais saudáveis", tag: "Landing Page" },
-        { title: "GM Store", tag: "Loja Virtual" },
+        { title: "Aviator", tag: "Aviação" },
+        { title: "Gaming Code", tag: "Jogos" },
+        { title: "PokeBattle", tag: "Entretenimento" },
       ],
     },
     tools: {
@@ -214,12 +211,9 @@ const dictionaries: Record<Lang, Dictionary> = {
       heading: "Success stories",
       link: "See our projects →",
       items: [
-        { title: "A technical partner that reduces your risk, not your margin", tag: "E-commerce" },
-        { title: "Cavland", tag: "Branding & Site" },
-        { title: "Ecossistema 4.0", tag: "Platform" },
-        { title: "Pate Nicolini", tag: "Corporate site" },
-        { title: "Helping adults build healthier relationships", tag: "Landing Page" },
-        { title: "GM Store", tag: "Online Store" },
+        { title: "Aviator", tag: "Aviation" },
+        { title: "Gaming Code", tag: "Games" },
+        { title: "PokeBattle", tag: "Entertainment" },
       ],
     },
     tools: {

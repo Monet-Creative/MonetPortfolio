@@ -1,18 +1,7 @@
-const CLIENTS = [
-  "BECCA",
-  "FauS",
-  "NO SHADOW",
-  "ANDRÉ RODRIGUES",
-  "SAMARA SERRA",
-  "COLETIVO",
-  "BLOEE",
-  "GM STORE",
-  "LAMARI",
-  "PASQUIM",
-]
+const CLIENTS = ["LandingPages", "Sites", "Eventos", "Aniversários", "Designs"]
 
 export default function ClientLogos() {
-  const row = [...CLIENTS, ...CLIENTS]
+  const row = [...CLIENTS, ...CLIENTS, ...CLIENTS, ...CLIENTS, ...CLIENTS, ...CLIENTS]
 
   return (
     <section className="overflow-hidden border-y border-white/5 py-10">

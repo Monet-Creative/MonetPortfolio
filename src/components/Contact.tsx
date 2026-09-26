@@ -111,12 +111,12 @@ export default function Contact() {
                 href={card.href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative rounded-2xl bg-paper/95 p-6 text-ink transition-transform hover:-translate-y-1"
+                className="group relative rounded-2xl bg-[rgba(246,247,251,0.95)] p-6 text-ink transition-transform hover:-translate-y-1"
               >
                 {body}
               </a>
             ) : (
-              <div key={card.key} className="relative rounded-2xl bg-paper/95 p-6 text-ink">
+              <div key={card.key} className="relative rounded-2xl bg-[rgba(246,247,251,0.95)] p-6 text-ink">
                 {body}
               </div>
             )
