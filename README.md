@@ -1,3 +1,15 @@
+# Monet — Landing page
+
+Site da Monet Creative. React + TypeScript + Vite + Tailwind CSS.
+
+```bash
+npm install
+npm run dev     # servidor local
+npm run build   # build de produção em dist/
+```
+
+---
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
