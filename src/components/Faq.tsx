@@ -12,7 +12,7 @@ export default function Faq() {
           {t.faq.eyebrow}
         </span>
         <h2 className="mt-4 text-balance font-display text-3xl font-semibold leading-tight text-paper md:text-4xl">
-          {t.faq.headingPrefix} {t.faq.headingGradient}
+          {t.faq.headingPrefix} <span className="text-gradient">{t.faq.headingGradient}</span>
         </h2>
 
         <div className="mt-10 text-left divide-y divide-paper/10 border-y border-paper/10">

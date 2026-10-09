@@ -7,7 +7,7 @@ type CaseItem = {
   tag: string
 }
 
-type ToolItem = {
+type StepItem = {
   title: string
   description: string
 }
@@ -30,6 +30,11 @@ type Dictionary = {
     faq: string
     contato: string
     openMenu: string
+    closeMenu: string
+  }
+  whatsapp: {
+    message: string
+    floatingLabel: string
   }
   hero: {
     titleLine1: string
@@ -37,18 +42,22 @@ type Dictionary = {
     subtitle: string
     ctaPrimary: string
     ctaSecondary: string
+    highlights: string[]
   }
+  services: string[]
   cases: {
     heading: string
+    subtitle: string
     items: CaseItem[]
     link: string
   }
-  tools: {
-    headingLine1: string
-    headingLine2: string
+  method: {
+    eyebrow: string
+    headingPrefix: string
     headingGradient: string
     subtitle: string
-    items: Record<"Frontend" | "Databases" | "Backend" | "Workflow" | "Development" | "Tools", ToolItem>
+    steps: StepItem[]
+    stackLabel: string
   }
   faq: {
     eyebrow: string
@@ -63,7 +72,6 @@ type Dictionary = {
     subtitle: string
     cards: {
       whatsapp: ContactCardItem
-      github: ContactCardItem
       email: ContactCardItem
     }
   }
@@ -84,55 +92,58 @@ const dictionaries: Record<Lang, Dictionary> = {
       faq: "FAQ",
       contato: "Fale conosco",
       openMenu: "Abrir menu",
+      closeMenu: "Fechar menu",
+    },
+    whatsapp: {
+      message: "Olá! Vim pelo site da Monet e quero um orçamento.",
+      floatingLabel: "Falar no WhatsApp",
     },
     hero: {
-      titleLine1: "Seu site pronto em",
-      titleLine2: "semanas, não meses.",
-      subtitle: "Desenvolvimento de sites e sistemas acelerado por inteligência artificial.",
-      ctaPrimary: "Entre em contato",
-      ctaSecondary: "Veja o que construímos",
+      titleLine1: "Seu site no ar em",
+      titleLine2: "dias, não meses.",
+      subtitle:
+        "Sites, landing pages e sistemas sob medida, desenvolvidos com inteligência artificial para entregar mais rápido sem abrir mão da qualidade.",
+      ctaPrimary: "Pedir orçamento no WhatsApp",
+      ctaSecondary: "Ver projetos",
+      highlights: ["Landing pages em 3 a 7 dias úteis", "100% responsivo", "Código e acessos são seus"],
     },
+    services: ["Landing pages", "Sites institucionais", "Sistemas sob medida", "Eventos", "Aniversários", "Design"],
     cases: {
-      heading: "Casos de sucesso",
-      link: "Confira nossos projetos →",
+      heading: "Projetos recentes",
+      subtitle: "Alguns dos sites e páginas que já colocamos no ar.",
+      link: "Veja mais no GitHub →",
       items: [
+        { title: "Chá Revelação", tag: "Eventos" },
         { title: "Aviator", tag: "Aviação" },
         { title: "Gaming Code", tag: "Jogos" },
         { title: "PokeBattle", tag: "Entretenimento" },
       ],
     },
-    tools: {
-      headingLine1: "As ferramentas que uso",
-      headingLine2: "para construir experiências",
-      headingGradient: "digitais.",
+    method: {
+      eyebrow: "Método",
+      headingPrefix: "Da ideia ao site no ar em",
+      headingGradient: "4 etapas.",
       subtitle:
-        "Tecnologias e práticas usadas para construir aplicações confiáveis, responsivas e de fácil manutenção.",
-      items: {
-        Frontend: {
-          title: "Frontend",
-          description: "Interfaces responsivas construídas com componentes limpos e reutilizáveis.",
+        "A IA acelera o código e as revisões; as decisões de design e de negócio continuam com a gente. Resultado: menos tempo e menos custo para você.",
+      steps: [
+        {
+          title: "Alinhamento",
+          description: "Conversamos sobre seu negócio, objetivo e público para definir escopo, prazo e orçamento.",
         },
-        Databases: {
-          title: "Databases",
-          description: "Trabalho com dados estruturados e integrações de banco de dados.",
+        {
+          title: "Layout",
+          description: "Criamos o visual da página e ajustamos com você até a aprovação.",
         },
-        Backend: {
-          title: "Backend",
-          description: "APIs e lógica de aplicação focadas em integrações confiáveis.",
+        {
+          title: "Desenvolvimento",
+          description: "Construímos o site com código limpo, rápido e testado em celular, tablet e desktop.",
         },
-        Workflow: {
-          title: "Workflow",
-          description: "Práticas ágeis e colaboração em todo o ciclo de desenvolvimento.",
+        {
+          title: "Publicação",
+          description: "Colocamos o site no ar com seu domínio e entregamos todos os acessos.",
         },
-        Development: {
-          title: "Development",
-          description: "Código limpo, escalável e de fácil manutenção para aplicações web.",
-        },
-        Tools: {
-          title: "Tools",
-          description: "Ferramentas que dão suporte ao meu fluxo de trabalho diário.",
-        },
-      },
+      ],
+      stackLabel: "Tecnologias que usamos",
     },
     faq: {
       eyebrow: "FAQ",
@@ -169,7 +180,7 @@ const dictionaries: Record<Lang, Dictionary> = {
         },
         {
           q: "Como solicito um orçamento?",
-          a: "Basta clicar no botão de contato, nos enviar uma mensagem no WhatsApp ou preencher o formulário explicando sua ideia. Retornamos rapidamente com uma proposta detalhada e sob medida para o seu caso.",
+          a: "Basta nos chamar no WhatsApp ou enviar um email explicando sua ideia. Retornamos rapidamente com uma proposta detalhada e sob medida para o seu caso.",
         },
       ],
     },
@@ -177,11 +188,10 @@ const dictionaries: Record<Lang, Dictionary> = {
       eyebrow: "Contato",
       headingPrefix: "Vamos construir algo",
       headingGradient: "significativo.",
-      subtitle: "Tem um projeto, uma oportunidade ou uma ideia pra conversar? Vamos adorar ouvir você.",
+      subtitle: "Conte sua ideia e receba uma proposta sob medida. Sem compromisso.",
       cards: {
-        whatsapp: { title: "WhatsApp", description: "Fale com a gente agora." },
-        github: { title: "GitHub", description: "Veja nossos projetos, contribuições e código." },
-        email: { title: "Email", description: "Envie uma mensagem - vamos adorar ouvir você." },
+        whatsapp: { title: "WhatsApp", description: "Resposta mais rápida." },
+        email: { title: "Email", description: "Prefere escrever? Mande sua ideia." },
       },
     },
     footer: {
@@ -199,55 +209,58 @@ const dictionaries: Record<Lang, Dictionary> = {
       faq: "FAQ",
       contato: "Get in touch",
       openMenu: "Open menu",
+      closeMenu: "Close menu",
+    },
+    whatsapp: {
+      message: "Hi! I found Monet's website and I'd like a quote.",
+      floatingLabel: "Chat on WhatsApp",
     },
     hero: {
-      titleLine1: "Your website ready in",
-      titleLine2: "weeks, not months.",
-      subtitle: "Website and systems development accelerated by artificial intelligence.",
-      ctaPrimary: "Get in touch",
-      ctaSecondary: "See what we've built",
+      titleLine1: "Your website live in",
+      titleLine2: "days, not months.",
+      subtitle:
+        "Websites, landing pages and custom systems, built with artificial intelligence to ship faster without cutting corners.",
+      ctaPrimary: "Get a quote on WhatsApp",
+      ctaSecondary: "See projects",
+      highlights: ["Landing pages in 3 to 7 business days", "100% responsive", "You own the code and access"],
     },
+    services: ["Landing pages", "Corporate websites", "Custom systems", "Events", "Birthdays", "Design"],
     cases: {
-      heading: "Success stories",
-      link: "See our projects →",
+      heading: "Recent projects",
+      subtitle: "Some of the websites and pages we've already shipped.",
+      link: "See more on GitHub →",
       items: [
+        { title: "Gender Reveal", tag: "Events" },
         { title: "Aviator", tag: "Aviation" },
         { title: "Gaming Code", tag: "Games" },
         { title: "PokeBattle", tag: "Entertainment" },
       ],
     },
-    tools: {
-      headingLine1: "The tools I use",
-      headingLine2: "to build digital",
-      headingGradient: "experiences.",
+    method: {
+      eyebrow: "Method",
+      headingPrefix: "From idea to live site in",
+      headingGradient: "4 steps.",
       subtitle:
-        "Technologies and practices used to build reliable, responsive and maintainable applications.",
-      items: {
-        Frontend: {
-          title: "Frontend",
-          description: "Responsive interfaces built with clean, reusable components.",
+        "AI speeds up the code and the reviews; design and business decisions stay with us. The result: less time and lower cost for you.",
+      steps: [
+        {
+          title: "Alignment",
+          description: "We talk about your business, goals and audience to define scope, timeline and budget.",
         },
-        Databases: {
-          title: "Databases",
-          description: "Working with structured data and database integrations.",
+        {
+          title: "Layout",
+          description: "We design the page and refine it with you until it's approved.",
         },
-        Backend: {
-          title: "Backend",
-          description: "APIs and application logic focused on reliable integrations.",
-        },
-        Workflow: {
-          title: "Workflow",
-          description: "Agile practices and collaboration throughout the development cycle.",
-        },
-        Development: {
+        {
           title: "Development",
-          description: "Clean, scalable, maintainable code for web applications.",
+          description: "We build the site with clean, fast code, tested on phone, tablet and desktop.",
         },
-        Tools: {
-          title: "Tools",
-          description: "Tools that support my daily workflow.",
+        {
+          title: "Launch",
+          description: "We put the site live on your domain and hand over all access.",
         },
-      },
+      ],
+      stackLabel: "Technologies we use",
     },
     faq: {
       eyebrow: "FAQ",
@@ -284,7 +297,7 @@ const dictionaries: Record<Lang, Dictionary> = {
         },
         {
           q: "How do I request a quote?",
-          a: "Just click the contact button, message us on WhatsApp or fill out the form describing your idea. We quickly get back with a detailed proposal tailored to your case.",
+          a: "Just message us on WhatsApp or send an email describing your idea. We quickly get back with a detailed proposal tailored to your case.",
         },
       ],
     },
@@ -292,11 +305,10 @@ const dictionaries: Record<Lang, Dictionary> = {
       eyebrow: "Contact",
       headingPrefix: "Let's build something",
       headingGradient: "meaningful.",
-      subtitle: "Have a project, an opportunity or an idea to talk about? We'd love to hear from you.",
+      subtitle: "Tell us your idea and get a tailored proposal. No strings attached.",
       cards: {
-        whatsapp: { title: "WhatsApp", description: "Talk to us right now." },
-        github: { title: "GitHub", description: "See our projects, contributions and code." },
-        email: { title: "Email", description: "Send a message - we'd love to hear from you." },
+        whatsapp: { title: "WhatsApp", description: "Fastest reply." },
+        email: { title: "Email", description: "Prefer writing? Send us your idea." },
       },
     },
     footer: {
@@ -306,6 +318,14 @@ const dictionaries: Record<Lang, Dictionary> = {
       contato: "Contact",
     },
   },
+}
+
+export const WHATSAPP_NUMBER = "5524981297207"
+export const CONTACT_EMAIL = "contato.monetcreative@gmail.com"
+export const GITHUB_URL = "https://github.com/Monet-Creative"
+
+export function whatsappLink(message: string) {
+  return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`
 }
 
 type LanguageContextValue = {

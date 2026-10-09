@@ -1,5 +1,4 @@
-import Logo from "./Logo"
-import { useLanguage } from "../i18n"
+import { useLanguage, whatsappLink } from "../i18n"
 
 export default function Hero() {
   const { t } = useLanguage()
@@ -12,21 +11,19 @@ export default function Hero() {
       />
 
       <div className="relative mx-auto max-w-3xl">
-        <div className="flex justify-center">
-          <Logo size="lg" />
-        </div>
-
-        <h1 className="mt-8 text-balance font-display text-4xl font-semibold leading-[1.15] tracking-tight text-paper md:text-6xl">
+        <h1 className="text-balance font-display text-4xl font-semibold leading-[1.15] tracking-tight text-paper md:text-6xl">
           {t.hero.titleLine1}
           <br />
-          {t.hero.titleLine2}
+          <span className="text-gradient">{t.hero.titleLine2}</span>
         </h1>
 
-        <p className="mx-auto mt-6 max-w-xl text-base text-paper/50 md:text-lg">{t.hero.subtitle}</p>
+        <p className="mx-auto mt-6 max-w-xl text-base text-paper/60 md:text-lg">{t.hero.subtitle}</p>
 
         <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
           <a
-            href="#contato"
+            href={whatsappLink(t.whatsapp.message)}
+            target="_blank"
+            rel="noopener noreferrer"
             className="w-full rounded-full bg-paper px-6 py-3 text-sm font-semibold text-ink transition-transform hover:scale-[1.03] sm:w-auto"
           >
             {t.hero.ctaPrimary}
@@ -38,6 +35,17 @@ export default function Hero() {
             {t.hero.ctaSecondary}
           </a>
         </div>
+
+        <ul className="mt-8 flex flex-col items-center justify-center gap-x-6 gap-y-2 text-sm text-paper/60 sm:flex-row sm:flex-wrap">
+          {t.hero.highlights.map((item) => (
+            <li key={item} className="flex items-center gap-2">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" className="text-brand-primary" aria-hidden>
+                <path d="m5 12 5 5L20 7" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              {item}
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )

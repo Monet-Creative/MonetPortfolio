@@ -45,7 +45,14 @@ export default function Header() {
 
         <div className="flex items-center gap-3 md:hidden">
           <LanguageSwitch />
-          <button className="text-paper" onClick={() => setOpen((v) => !v)} aria-label={t.nav.openMenu}>
+          <button
+            type="button"
+            className="text-paper"
+            onClick={() => setOpen((v) => !v)}
+            aria-label={open ? t.nav.closeMenu : t.nav.openMenu}
+            aria-expanded={open}
+            aria-controls="mobile-menu"
+          >
             <svg width="22" height="16" viewBox="0 0 22 16" fill="none">
               <path d="M0 1h22M0 8h22M0 15h22" stroke="currentColor" strokeWidth="1.5" />
             </svg>
@@ -54,7 +61,7 @@ export default function Header() {
       </div>
 
       {open && (
-        <div className="flex flex-col gap-4 border-t border-white/10 px-6 py-6 md:hidden">
+        <div id="mobile-menu" className="flex flex-col gap-4 border-t border-white/10 px-6 py-6 md:hidden">
           {navLinks.map((link) => (
             <a
               key={link.href}
