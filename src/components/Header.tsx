@@ -9,6 +9,7 @@ export default function Header() {
 
   const navLinks = [
     { label: t.nav.inicio, href: "#inicio" },
+    { label: t.nav.servicos, href: "#servicos" },
     { label: t.nav.metodo, href: "#metodo" },
     { label: t.nav.portfolio, href: "#casos" },
     { label: t.nav.faq, href: "#faq" },

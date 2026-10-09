@@ -15,46 +15,81 @@ const CASE_LINKS: (string | undefined)[] = [
 ]
 
 const CARD_CLASS =
-  "group relative flex aspect-16/10 flex-col justify-end overflow-hidden rounded-xl p-6 text-paper ring-1 ring-white/10"
+  "group relative flex flex-col rounded-2xl border border-white/10 bg-white/3 p-2 backdrop-blur transition-all duration-300"
 
 export default function Cases() {
   const { t } = useLanguage()
 
   return (
-    <section id="casos" className="px-6 py-20">
+    <section id="casos" className="px-6 py-24">
       <div className="mx-auto max-w-6xl">
-        <div className="text-center">
-          <h2 className="text-balance font-display text-3xl font-semibold text-paper md:text-4xl">{t.cases.heading}</h2>
-          <p className="mt-3 text-paper/60">{t.cases.subtitle}</p>
+        <div className="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-xl">
+            <span className="text-xs font-semibold uppercase tracking-[0.2em] text-brand-primary">
+              {t.cases.eyebrow}
+            </span>
+            <h2 className="mt-4 text-balance font-display text-3xl font-semibold leading-tight text-paper md:text-4xl">
+              {t.cases.headingPrefix} <span className="text-gradient">{t.cases.headingGradient}</span>
+            </h2>
+            <p className="mt-4 text-paper/60">{t.cases.subtitle}</p>
+          </div>
+
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="shrink-0 text-sm text-paper/60 transition-colors hover:text-paper"
+          >
+            {t.cases.link}
+          </a>
         </div>
 
-        <div className="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-2">
+        <div className="mt-12 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {t.cases.items.map((item, i) => {
             const href = CASE_LINKS[i]
             const body = (
               <>
-                <img
-                  src={CASE_IMAGES[i]}
-                  alt=""
-                  loading="lazy"
-                  decoding="async"
-                  className="absolute inset-0 h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                />
-                <div className="absolute inset-0 bg-linear-to-t from-black/85 via-black/20 to-transparent" />
-                {href && (
-                  <svg
-                    width="16"
-                    height="16"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    aria-hidden
-                    className="absolute right-5 top-5 text-paper/70 transition-colors group-hover:text-paper"
-                  >
-                    <path d="M7 17 17 7M17 7H9m8 0v8" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                  </svg>
-                )}
-                <span className="relative z-10 text-xs font-medium uppercase tracking-wider opacity-80">{item.tag}</span>
-                <p className="relative z-10 mt-2 text-lg font-semibold leading-snug">{item.title}</p>
+                <div className="overflow-hidden rounded-xl border border-white/5 bg-black">
+                  <div aria-hidden className="flex h-5 items-center gap-1 bg-white/5 px-2.5">
+                    <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-white/20" />
+                  </div>
+                  <div className="aspect-16/10 overflow-hidden">
+                    <img
+                      src={CASE_IMAGES[i]}
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                </div>
+
+                <div className="flex items-center justify-between gap-3 px-2 pt-3 pb-1.5">
+                  <div className="min-w-0">
+                    <p className="truncate text-sm font-semibold text-paper">{item.title}</p>
+                    <p className="mt-0.5 text-xs text-paper/50">{item.tag}</p>
+                  </div>
+                  {href && (
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      aria-hidden
+                      className="shrink-0 text-paper/30 transition-all duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-paper"
+                    >
+                      <path
+                        d="M7 17 17 7M17 7H9m8 0v8"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      />
+                    </svg>
+                  )}
+                </div>
               </>
             )
 
@@ -64,7 +99,7 @@ export default function Cases() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`${CARD_CLASS} transition-transform duration-300 hover:-translate-y-1`}
+                className={`${CARD_CLASS} hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/6`}
               >
                 {body}
               </a>
@@ -74,17 +109,6 @@ export default function Cases() {
               </div>
             )
           })}
-        </div>
-
-        <div className="mt-10 text-center">
-          <a
-            href={GITHUB_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-paper/60 transition-colors hover:text-paper"
-          >
-            {t.cases.link}
-          </a>
         </div>
       </div>
     </section>

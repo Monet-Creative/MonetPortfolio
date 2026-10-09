@@ -12,9 +12,10 @@ type StepItem = {
   description: string
 }
 
-type ContactCardItem = {
+type OfferItem = {
   title: string
   description: string
+  chip: string
 }
 
 type FaqItem = {
@@ -25,6 +26,7 @@ type FaqItem = {
 type Dictionary = {
   nav: {
     inicio: string
+    servicos: string
     metodo: string
     portfolio: string
     faq: string
@@ -37,6 +39,7 @@ type Dictionary = {
     floatingLabel: string
   }
   hero: {
+    badge: string
     titleLine1: string
     titleLine2: string
     subtitle: string
@@ -45,8 +48,20 @@ type Dictionary = {
     highlights: string[]
   }
   services: string[]
+  offer: {
+    eyebrow: string
+    headingPrefix: string
+    headingGradient: string
+    subtitle: string
+    landing: OfferItem & { mockTitle: string; mockCta: string }
+    events: OfferItem & { mockTitle: string; mockName: string; mockGuest: string; mockCta: string }
+    institutional: OfferItem
+    systems: OfferItem & { mockLabel: string }
+  }
   cases: {
-    heading: string
+    eyebrow: string
+    headingPrefix: string
+    headingGradient: string
     subtitle: string
     items: CaseItem[]
     link: string
@@ -63,6 +78,9 @@ type Dictionary = {
     eyebrow: string
     headingPrefix: string
     headingGradient: string
+    subtitle: string
+    ctaText: string
+    ctaButton: string
     items: FaqItem[]
   }
   contact: {
@@ -70,10 +88,7 @@ type Dictionary = {
     headingPrefix: string
     headingGradient: string
     subtitle: string
-    cards: {
-      whatsapp: ContactCardItem
-      email: ContactCardItem
-    }
+    fastest: string
   }
   footer: {
     rights: string
@@ -87,6 +102,7 @@ const dictionaries: Record<Lang, Dictionary> = {
   pt: {
     nav: {
       inicio: "Início",
+      servicos: "Serviços",
       metodo: "Método",
       portfolio: "Portfólio",
       faq: "FAQ",
@@ -99,6 +115,7 @@ const dictionaries: Record<Lang, Dictionary> = {
       floatingLabel: "Falar no WhatsApp",
     },
     hero: {
+      badge: "Desenvolvimento acelerado por IA",
       titleLine1: "Seu site no ar em",
       titleLine2: "dias, não meses.",
       subtitle:
@@ -108,8 +125,43 @@ const dictionaries: Record<Lang, Dictionary> = {
       highlights: ["Landing pages em 3 a 7 dias úteis", "100% responsivo", "Código e acessos são seus"],
     },
     services: ["Landing pages", "Sites institucionais", "Sistemas sob medida", "Eventos", "Aniversários", "Design"],
+    offer: {
+      eyebrow: "Serviços",
+      headingPrefix: "O que a gente",
+      headingGradient: "constrói.",
+      subtitle: "Do convite de aniversário ao sistema da sua empresa: cada projeto feito sob medida.",
+      landing: {
+        title: "Landing pages",
+        description: "Uma página focada em um objetivo: vender, captar contatos ou divulgar um lançamento.",
+        chip: "3 a 7 dias úteis",
+        mockTitle: "Seu produto aqui",
+        mockCta: "Comprar agora",
+      },
+      events: {
+        title: "Eventos e convites",
+        description: "Convites digitais para chás, aniversários e casamentos, com confirmação de presença online.",
+        chip: "Com RSVP",
+        mockTitle: "Confirme sua presença",
+        mockName: "Seu nome",
+        mockGuest: "Acompanhante",
+        mockCta: "Confirmar",
+      },
+      institutional: {
+        title: "Sites institucionais",
+        description: "A presença online da sua empresa, com páginas de serviços, sobre e contato.",
+        chip: "Multipáginas",
+      },
+      systems: {
+        title: "Sistemas sob medida",
+        description: "Painéis, cadastros e automações para organizar a operação do seu negócio.",
+        chip: "Web apps",
+        mockLabel: "Vendas",
+      },
+    },
     cases: {
-      heading: "Projetos recentes",
+      eyebrow: "Portfólio",
+      headingPrefix: "Projetos",
+      headingGradient: "recentes.",
       subtitle: "Alguns dos sites e páginas que já colocamos no ar.",
       link: "Veja mais no GitHub →",
       items: [
@@ -149,6 +201,9 @@ const dictionaries: Record<Lang, Dictionary> = {
       eyebrow: "FAQ",
       headingPrefix: "Perguntas",
       headingGradient: "frequentes.",
+      subtitle: "Tudo o que você precisa saber antes de começar seu projeto.",
+      ctaText: "Não encontrou sua resposta?",
+      ctaButton: "Pergunte no WhatsApp",
       items: [
         {
           q: "Quanto tempo leva para o projeto ficar pronto?",
@@ -189,10 +244,7 @@ const dictionaries: Record<Lang, Dictionary> = {
       headingPrefix: "Vamos construir algo",
       headingGradient: "significativo.",
       subtitle: "Conte sua ideia e receba uma proposta sob medida. Sem compromisso.",
-      cards: {
-        whatsapp: { title: "WhatsApp", description: "Resposta mais rápida." },
-        email: { title: "Email", description: "Prefere escrever? Mande sua ideia." },
-      },
+      fastest: "Mais rápido",
     },
     footer: {
       rights: "Todos os direitos reservados.",
@@ -204,6 +256,7 @@ const dictionaries: Record<Lang, Dictionary> = {
   en: {
     nav: {
       inicio: "Home",
+      servicos: "Services",
       metodo: "Method",
       portfolio: "Portfolio",
       faq: "FAQ",
@@ -216,6 +269,7 @@ const dictionaries: Record<Lang, Dictionary> = {
       floatingLabel: "Chat on WhatsApp",
     },
     hero: {
+      badge: "AI-accelerated development",
       titleLine1: "Your website live in",
       titleLine2: "days, not months.",
       subtitle:
@@ -225,8 +279,43 @@ const dictionaries: Record<Lang, Dictionary> = {
       highlights: ["Landing pages in 3 to 7 business days", "100% responsive", "You own the code and access"],
     },
     services: ["Landing pages", "Corporate websites", "Custom systems", "Events", "Birthdays", "Design"],
+    offer: {
+      eyebrow: "Services",
+      headingPrefix: "What we",
+      headingGradient: "build.",
+      subtitle: "From birthday invitations to your company's system: every project tailor-made.",
+      landing: {
+        title: "Landing pages",
+        description: "A page focused on one goal: selling, capturing leads or promoting a launch.",
+        chip: "3 to 7 business days",
+        mockTitle: "Your product here",
+        mockCta: "Buy now",
+      },
+      events: {
+        title: "Events & invitations",
+        description: "Digital invitations for showers, birthdays and weddings, with online RSVP.",
+        chip: "With RSVP",
+        mockTitle: "Confirm attendance",
+        mockName: "Your name",
+        mockGuest: "Plus one",
+        mockCta: "Confirm",
+      },
+      institutional: {
+        title: "Corporate websites",
+        description: "Your company's online presence, with services, about and contact pages.",
+        chip: "Multi-page",
+      },
+      systems: {
+        title: "Custom systems",
+        description: "Dashboards, records and automations to organize your business operations.",
+        chip: "Web apps",
+        mockLabel: "Sales",
+      },
+    },
     cases: {
-      heading: "Recent projects",
+      eyebrow: "Portfolio",
+      headingPrefix: "Recent",
+      headingGradient: "projects.",
       subtitle: "Some of the websites and pages we've already shipped.",
       link: "See more on GitHub →",
       items: [
@@ -266,6 +355,9 @@ const dictionaries: Record<Lang, Dictionary> = {
       eyebrow: "FAQ",
       headingPrefix: "Frequently asked",
       headingGradient: "questions.",
+      subtitle: "Everything you need to know before starting your project.",
+      ctaText: "Didn't find your answer?",
+      ctaButton: "Ask on WhatsApp",
       items: [
         {
           q: "How long does it take to finish a project?",
@@ -306,10 +398,7 @@ const dictionaries: Record<Lang, Dictionary> = {
       headingPrefix: "Let's build something",
       headingGradient: "meaningful.",
       subtitle: "Tell us your idea and get a tailored proposal. No strings attached.",
-      cards: {
-        whatsapp: { title: "WhatsApp", description: "Fastest reply." },
-        email: { title: "Email", description: "Prefer writing? Send us your idea." },
-      },
+      fastest: "Fastest",
     },
     footer: {
       rights: "All rights reserved.",
@@ -323,6 +412,7 @@ const dictionaries: Record<Lang, Dictionary> = {
 export const WHATSAPP_NUMBER = "5524981297207"
 export const CONTACT_EMAIL = "contato.monetcreative@gmail.com"
 export const GITHUB_URL = "https://github.com/Monet-Creative"
+export const INSTAGRAM_URL = "https://www.instagram.com/monetcreative_"
 
 export function whatsappLink(message: string) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`

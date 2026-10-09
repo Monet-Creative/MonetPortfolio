@@ -16,20 +16,31 @@ export default function Method() {
           <p className="mt-4 text-paper/60">{t.method.subtitle}</p>
         </div>
 
-        <ol className="mt-14 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {t.method.steps.map((step, i) => (
-            <li
-              key={step.title}
-              className="rounded-2xl border border-ink/5 bg-paper p-6 text-ink shadow-[0_10px_40px_-15px_rgba(0,0,0,0.6)]"
-            >
-              <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-linear-to-br from-brand-primary to-brand-secondary text-sm font-bold text-white">
-                {i + 1}
-              </span>
-              <h3 className="mt-4 text-base font-semibold">{step.title}</h3>
-              <p className="mt-1.5 text-sm leading-relaxed text-ink/60">{step.description}</p>
-            </li>
-          ))}
-        </ol>
+        <div className="relative mt-14">
+          <div
+            aria-hidden
+            className="absolute left-4 right-0 top-4 hidden h-px bg-linear-to-r from-brand-primary/70 via-brand-secondary/50 to-transparent lg:block"
+          />
+
+          <ol className="grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-4">
+            {t.method.steps.map((step, i) => (
+              <li key={step.title} className="group relative">
+                <span className="relative z-10 flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-black text-xs font-semibold text-paper transition-colors duration-300 group-hover:border-brand-primary group-hover:text-brand-primary">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+
+                <div className="relative mt-4 h-[calc(100%-3rem)] overflow-hidden rounded-2xl border border-white/10 bg-white/3 p-5 backdrop-blur transition-all duration-300 group-hover:-translate-y-0.5 group-hover:border-white/25 group-hover:bg-white/6">
+                  <div
+                    aria-hidden
+                    className="absolute inset-x-0 top-0 h-px bg-linear-to-r from-transparent via-brand-primary to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+                  />
+                  <h3 className="text-base font-semibold text-paper">{step.title}</h3>
+                  <p className="mt-2 text-sm leading-relaxed text-paper/55">{step.description}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
 
         <div className="mt-12 flex flex-col gap-3 sm:flex-row sm:items-center">
           <span className="shrink-0 text-xs font-semibold uppercase tracking-wider text-paper/50">
