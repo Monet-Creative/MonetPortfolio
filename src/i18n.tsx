@@ -66,6 +66,20 @@ type Dictionary = {
     items: CaseItem[]
     link: string
   }
+  reels: {
+    eyebrow: string
+    headingPrefix: string
+    headingGradient: string
+    subtitle: string
+    watch: string
+    play: string
+    pause: string
+    mute: string
+    unmute: string
+    previous: string
+    next: string
+    titles: string[]
+  }
   method: {
     eyebrow: string
     headingPrefix: string
@@ -168,7 +182,27 @@ const dictionaries: Record<Lang, Dictionary> = {
         { title: "Chá Revelação", tag: "Eventos" },
         { title: "Aviator", tag: "Aviação" },
         { title: "Gaming Code", tag: "Jogos" },
-        { title: "PokeBattle", tag: "Entretenimento" },
+        { title: "Essenza Estética", tag: "Estética e Saúde" },
+      ],
+    },
+    reels: {
+      eyebrow: "Instagram",
+      headingPrefix: "Nosso conteúdo em",
+      headingGradient: "movimento.",
+      subtitle: "Os vídeos do nosso feed, direto do Instagram.",
+      watch: "Ver no Instagram",
+      play: "Reproduzir",
+      pause: "Pausar",
+      mute: "Desativar som",
+      unmute: "Ativar som",
+      previous: "Vídeo anterior",
+      next: "Próximo vídeo",
+      titles: [
+        "Sua clínica está perdendo clientes?",
+        "O painel da sua clínica",
+        "Site para clínicas de estética",
+        "Seu site no ar em 7 dias",
+        "Sua ideia vira obra-prima digital",
       ],
     },
     method: {
@@ -322,7 +356,27 @@ const dictionaries: Record<Lang, Dictionary> = {
         { title: "Gender Reveal", tag: "Events" },
         { title: "Aviator", tag: "Aviation" },
         { title: "Gaming Code", tag: "Games" },
-        { title: "PokeBattle", tag: "Entertainment" },
+        { title: "Essenza Estética", tag: "Aesthetics & Health" },
+      ],
+    },
+    reels: {
+      eyebrow: "Instagram",
+      headingPrefix: "Our content in",
+      headingGradient: "motion.",
+      subtitle: "The videos from our feed, straight from Instagram.",
+      watch: "Watch on Instagram",
+      play: "Play",
+      pause: "Pause",
+      mute: "Mute",
+      unmute: "Unmute",
+      previous: "Previous video",
+      next: "Next video",
+      titles: [
+        "Is your clinic losing clients?",
+        "Your clinic's dashboard",
+        "Websites for aesthetic clinics",
+        "Your website live in 7 days",
+        "Your idea becomes a digital masterpiece",
       ],
     },
     method: {
@@ -409,7 +463,7 @@ const dictionaries: Record<Lang, Dictionary> = {
   },
 }
 
-export const WHATSAPP_NUMBER = "5524981297207"
+export const WHATSAPP_NUMBER = "5583921565651"
 export const CONTACT_EMAIL = "contato.monetcreative@gmail.com"
 export const GITHUB_URL = "https://github.com/Monet-Creative"
 export const INSTAGRAM_URL = "https://www.instagram.com/monetcreative_"

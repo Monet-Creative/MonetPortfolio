@@ -2,16 +2,16 @@ import { GITHUB_URL, useLanguage } from "../i18n"
 import chaRevelacaoImage from "../assets/ChaRevelacaoImage.jpg"
 import aviatorImage from "../assets/AviatorImage.jpg"
 import gamingCodeImage from "../assets/GamingCodeImage.jpg"
-import pokemonImage from "../assets/PokemonImage.jpg"
+import essenzaImage from "../assets/EssenzaImage.jpg"
 
-const CASE_IMAGES = [chaRevelacaoImage, aviatorImage, gamingCodeImage, pokemonImage]
+const CASE_IMAGES = [chaRevelacaoImage, aviatorImage, gamingCodeImage, essenzaImage]
 
 // Projects without a public URL render as non-clickable cards.
 const CASE_LINKS: (string | undefined)[] = [
   undefined,
   "https://lpaviatorinfo.pages.dev/",
   "https://gaming-code.vercel.app/pg-home.html",
-  "https://desafio-treinamento-front-fabrica.vercel.app/battlePage.html",
+  "https://essenzaestetica-lp.pages.dev/",
 ]
 
 const CARD_CLASS =

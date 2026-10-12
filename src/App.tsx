@@ -3,6 +3,7 @@ import Hero from "./components/Hero"
 import ClientLogos from "./components/ClientLogos"
 import Services from "./components/Services"
 import Cases from "./components/Cases"
+import Reels from "./components/Reels"
 import Method from "./components/Method"
 import Faq from "./components/Faq"
 import Contact from "./components/Contact"
@@ -20,6 +21,7 @@ export default function App() {
           <ClientLogos />
           <Services />
           <Cases />
+          <Reels />
           <Method />
           <Faq />
           <Contact />

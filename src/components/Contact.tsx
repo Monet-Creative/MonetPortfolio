@@ -15,7 +15,7 @@ const CARDS: CardMeta[] = [
   {
     key: "whatsapp",
     title: "WhatsApp",
-    text: "(24) 98129-7207",
+    text: "(83) 92156-5651",
     iconBg: "bg-[#25D366]",
     icon: <WhatsAppIcon />,
   },
