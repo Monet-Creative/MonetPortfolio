@@ -2,6 +2,7 @@ import Header from "./components/Header"
 import Hero from "./components/Hero"
 import ClientLogos from "./components/ClientLogos"
 import Services from "./components/Services"
+import Pricing from "./components/Pricing"
 import Cases from "./components/Cases"
 import Reels from "./components/Reels"
 import Method from "./components/Method"
@@ -24,6 +25,7 @@ export default function App() {
           <Reels />
           <Method />
           <Faq />
+          <Pricing />
           <Contact />
         </main>
         <Footer />

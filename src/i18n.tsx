@@ -27,6 +27,7 @@ type Dictionary = {
   nav: {
     inicio: string
     servicos: string
+    precos: string
     metodo: string
     portfolio: string
     faq: string
@@ -57,6 +58,28 @@ type Dictionary = {
     events: OfferItem & { mockTitle: string; mockName: string; mockGuest: string; mockCta: string }
     institutional: OfferItem
     systems: OfferItem & { mockLabel: string }
+  }
+  pricing: {
+    eyebrow: string
+    headingPrefix: string
+    headingGradient: string
+    subtitle: string
+    promo: string
+    tabs: { images: string; videos: string; landing: string }
+    packSingle: string
+    packMulti: string
+    unit: { images: [string, string]; videos: [string, string] }
+    total: string
+    each: string
+    popular: string
+    bestValue: string
+    cta: string
+    ctaMessage: string
+    landing: {
+      static: { title: string; description: string; features: string[] }
+      admin: { title: string; description: string; features: string[]; badge: string }
+    }
+    note: string
   }
   cases: {
     eyebrow: string
@@ -117,6 +140,7 @@ const dictionaries: Record<Lang, Dictionary> = {
     nav: {
       inicio: "Início",
       servicos: "Serviços",
+      precos: "Preços",
       metodo: "Método",
       portfolio: "Portfólio",
       faq: "FAQ",
@@ -171,6 +195,42 @@ const dictionaries: Record<Lang, Dictionary> = {
         chip: "Web apps",
         mockLabel: "Vendas",
       },
+    },
+    pricing: {
+      eyebrow: "Preços",
+      headingPrefix: "Quanto",
+      headingGradient: "custa.",
+      subtitle: "Valores claros, sem surpresa. Escolha o pacote e fale com a gente no WhatsApp.",
+      promo: "Promoção",
+      tabs: { images: "Imagens", videos: "Vídeos", landing: "Landing Pages" },
+      packSingle: "Pacote Único",
+      packMulti: "Pacote {n} {unit}",
+      unit: { images: ["Imagem", "Imagens"], videos: ["Vídeo", "Vídeos"] },
+      total: "total",
+      each: "cada",
+      popular: "Mais Popular",
+      bestValue: "Melhor Valor",
+      cta: "Garanta seu pacote",
+      ctaMessage: "Olá! Vim pelo site da Monet e quero o {item} por {price}.",
+      landing: {
+        static: {
+          title: "Landing Page Estática",
+          description: "Uma página focada em um objetivo: vender, captar contatos ou divulgar um lançamento.",
+          features: ["Página focada em conversão", "100% responsiva", "Entrega em 3 a 7 dias úteis", "Código e acessos são seus"],
+        },
+        admin: {
+          title: "Landing Page com Painel Administrativo",
+          description: "Tudo da landing page estática, com um painel para você gerenciar o site sozinho.",
+          features: [
+            "Tudo da Landing Page Estática",
+            "Painel administrativo",
+            "Atualize textos, fotos e informações",
+            "Código e acessos são seus",
+          ],
+          badge: "Mais completa",
+        },
+      },
+      note: "Valores em reais (R$).",
     },
     cases: {
       eyebrow: "Portfólio",
@@ -291,6 +351,7 @@ const dictionaries: Record<Lang, Dictionary> = {
     nav: {
       inicio: "Home",
       servicos: "Services",
+      precos: "Pricing",
       metodo: "Method",
       portfolio: "Portfolio",
       faq: "FAQ",
@@ -345,6 +406,42 @@ const dictionaries: Record<Lang, Dictionary> = {
         chip: "Web apps",
         mockLabel: "Sales",
       },
+    },
+    pricing: {
+      eyebrow: "Pricing",
+      headingPrefix: "How much it",
+      headingGradient: "costs.",
+      subtitle: "Clear prices, no surprises. Pick a package and message us on WhatsApp.",
+      promo: "Promo",
+      tabs: { images: "Images", videos: "Videos", landing: "Landing Pages" },
+      packSingle: "Single Pack",
+      packMulti: "{n} {unit} Pack",
+      unit: { images: ["Image", "Images"], videos: ["Video", "Videos"] },
+      total: "total",
+      each: "each",
+      popular: "Most Popular",
+      bestValue: "Best Value",
+      cta: "Get your pack",
+      ctaMessage: "Hi! I found Monet's website and I'd like the {item} for {price}.",
+      landing: {
+        static: {
+          title: "Static Landing Page",
+          description: "A page focused on one goal: selling, capturing leads or promoting a launch.",
+          features: ["Conversion-focused page", "100% responsive", "Delivered in 3 to 7 business days", "You own the code and access"],
+        },
+        admin: {
+          title: "Landing Page with Admin Panel",
+          description: "Everything in the static landing page, plus a panel so you can manage the site yourself.",
+          features: [
+            "Everything in the Static Landing Page",
+            "Admin panel",
+            "Update texts, photos and information",
+            "You own the code and access",
+          ],
+          badge: "Most complete",
+        },
+      },
+      note: "Prices in Brazilian reais (R$).",
     },
     cases: {
       eyebrow: "Portfolio",

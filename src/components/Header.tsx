@@ -13,6 +13,7 @@ export default function Header() {
     { label: t.nav.metodo, href: "#metodo" },
     { label: t.nav.portfolio, href: "#casos" },
     { label: t.nav.faq, href: "#faq" },
+    { label: t.nav.precos, href: "#precos" },
   ]
 
   return (
