@@ -24,3 +24,9 @@ dist-ssr
 *.sw?
 
 .playwright-mcp/
+
+# Cloudflare / local secrets
+.dev.vars
+.env
+.env.*.local
+.wrangler/

@@ -1,0 +1,6 @@
+# Local secrets for `npx wrangler@3 pages dev dist` (copy to .dev.vars, never commit).
+# Use the TEST credentials from Mercado Pago: Your integrations -> app -> Test credentials.
+MP_ACCESS_TOKEN=APP_USR-...      # server only
+MP_PUBLIC_KEY=APP_USR-...        # served to the Bricks via /api/mp-config
+MP_WEBHOOK_SECRET=...            # Your integrations -> Webhooks -> signature secret
+# APP_URL=https://monetportfolio.pages.dev   # optional; defaults to the request origin

@@ -1,4 +1,5 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react"
+import type { OfferId } from "./lib/catalog"
 
 export type Lang = "pt" | "en"
 
@@ -73,8 +74,7 @@ type Dictionary = {
     each: string
     popular: string
     bestValue: string
-    cta: string
-    ctaMessage: string
+    pay: string
     landing: {
       static: { title: string; description: string; features: string[] }
       admin: { title: string; description: string; features: string[]; badge: string }
@@ -127,11 +127,50 @@ type Dictionary = {
     subtitle: string
     fastest: string
   }
+  checkout: {
+    back: string
+    eyebrow: string
+    summary: string
+    total: string
+    secure: string
+    loading: string
+    processing: string
+    configError: string
+    paymentError: string
+    statusHeading: string
+    approved: string
+    statusLoading: string
+    invalidPayment: string
+    briefTitle: string
+    briefText: string
+    briefButton: string
+    briefMessage: string
+    backToSite: string
+    offers: Record<OfferId, string>
+  }
+  consent: {
+    title: string
+    text: string
+    policy: string
+    acceptAll: string
+    rejectAll: string
+    customize: string
+    save: string
+    necessaryTitle: string
+    necessaryText: string
+    analyticsTitle: string
+    analyticsText: string
+    marketingTitle: string
+    marketingText: string
+    alwaysOn: string
+  }
   footer: {
     rights: string
     inicio: string
     portfolio: string
     contato: string
+    privacy: string
+    cookies: string
   }
 }
 
@@ -210,8 +249,7 @@ const dictionaries: Record<Lang, Dictionary> = {
       each: "cada",
       popular: "Mais Popular",
       bestValue: "Melhor Valor",
-      cta: "Garanta seu pacote",
-      ctaMessage: "Olá! Vim pelo site da Monet e quero o {item} por {price}.",
+      pay: "Pagar com Mercado Pago",
       landing: {
         static: {
           title: "Landing Page Estática",
@@ -340,11 +378,59 @@ const dictionaries: Record<Lang, Dictionary> = {
       subtitle: "Conte sua ideia e receba uma proposta sob medida. Sem compromisso.",
       fastest: "Mais rápido",
     },
+    checkout: {
+      back: "Voltar aos preços",
+      eyebrow: "Pagamento",
+      summary: "Seu pedido",
+      total: "Total",
+      secure: "Pagamento processado pelo Mercado Pago. Os dados do seu cartão não passam pelos nossos servidores.",
+      loading: "Carregando pagamento…",
+      processing: "Processando seu pagamento…",
+      configError: "Não foi possível carregar o pagamento agora. Tente novamente em instantes ou fale com a gente no WhatsApp.",
+      paymentError: "Não foi possível concluir o pagamento. Confira os dados e tente de novo, ou fale com a gente no WhatsApp.",
+      statusHeading: "Resultado do pagamento",
+      approved: "Pagamento aprovado! Obrigado pela compra.",
+      statusLoading: "Consultando seu pagamento…",
+      invalidPayment: "Pagamento não encontrado. Volte aos preços e tente novamente.",
+      briefTitle: "Próximo passo",
+      briefText: "Envie o briefing pelo WhatsApp com o número do pagamento para começarmos o seu pedido.",
+      briefButton: "Enviar briefing no WhatsApp",
+      briefMessage: "Olá! Acabei de pagar o pacote {item} (pagamento {id}) e quero enviar o briefing.",
+      backToSite: "Voltar ao site",
+      offers: {
+        images_1: "Criativos — Pacote Único (1 imagem)",
+        images_3: "Criativos — Pacote 3 Imagens",
+        images_5: "Criativos — Pacote 5 Imagens",
+        videos_1: "Vídeo animado — Pacote Único (1 vídeo)",
+        videos_3: "Vídeos animados — Pacote 3 Vídeos",
+        videos_5: "Vídeos animados — Pacote 5 Vídeos",
+        landing_static: "Landing Page Estática",
+        landing_admin: "Landing Page com Painel Administrativo",
+      },
+    },
+    consent: {
+      title: "Sua privacidade",
+      text: "Usamos cookies necessários para o site funcionar e, com a sua permissão, cookies de estatísticas para entender como o site é usado e melhorá-lo. Você pode aceitar, recusar ou escolher o que permitir, e mudar de ideia quando quiser.",
+      policy: "Política de Privacidade",
+      acceptAll: "Aceitar todos",
+      rejectAll: "Recusar opcionais",
+      customize: "Personalizar",
+      save: "Salvar preferências",
+      necessaryTitle: "Necessários",
+      necessaryText: "Idioma, sua escolha de cookies e segurança do pagamento. Sempre ativos.",
+      analyticsTitle: "Estatísticas",
+      analyticsText: "Google Analytics: páginas vistas, cliques e rolagem, de forma agregada, para melhorar o site.",
+      marketingTitle: "Marketing",
+      marketingText: "Anúncios e remarketing. Hoje não usamos; fica reservado para campanhas futuras.",
+      alwaysOn: "Sempre ativo",
+    },
     footer: {
       rights: "Todos os direitos reservados.",
       inicio: "Início",
       portfolio: "Portfólio",
       contato: "Contato",
+      privacy: "Privacidade",
+      cookies: "Cookies",
     },
   },
   en: {
@@ -421,8 +507,7 @@ const dictionaries: Record<Lang, Dictionary> = {
       each: "each",
       popular: "Most Popular",
       bestValue: "Best Value",
-      cta: "Get your pack",
-      ctaMessage: "Hi! I found Monet's website and I'd like the {item} for {price}.",
+      pay: "Pay with Mercado Pago",
       landing: {
         static: {
           title: "Static Landing Page",
@@ -551,11 +636,59 @@ const dictionaries: Record<Lang, Dictionary> = {
       subtitle: "Tell us your idea and get a tailored proposal. No strings attached.",
       fastest: "Fastest",
     },
+    checkout: {
+      back: "Back to pricing",
+      eyebrow: "Payment",
+      summary: "Your order",
+      total: "Total",
+      secure: "Payment processed by Mercado Pago. Your card details never touch our servers.",
+      loading: "Loading payment…",
+      processing: "Processing your payment…",
+      configError: "We couldn't load the payment right now. Try again shortly or message us on WhatsApp.",
+      paymentError: "We couldn't complete the payment. Check your details and try again, or message us on WhatsApp.",
+      statusHeading: "Payment result",
+      approved: "Payment approved! Thank you for your purchase.",
+      statusLoading: "Checking your payment…",
+      invalidPayment: "Payment not found. Go back to pricing and try again.",
+      briefTitle: "Next step",
+      briefText: "Send your brief on WhatsApp with the payment number so we can start your order.",
+      briefButton: "Send brief on WhatsApp",
+      briefMessage: "Hi! I just paid for the {item} pack (payment {id}) and I'd like to send my brief.",
+      backToSite: "Back to the site",
+      offers: {
+        images_1: "Creatives — Single Pack (1 image)",
+        images_3: "Creatives — 3 Images Pack",
+        images_5: "Creatives — 5 Images Pack",
+        videos_1: "Animated video — Single Pack (1 video)",
+        videos_3: "Animated videos — 3 Videos Pack",
+        videos_5: "Animated videos — 5 Videos Pack",
+        landing_static: "Static Landing Page",
+        landing_admin: "Landing Page with Admin Panel",
+      },
+    },
+    consent: {
+      title: "Your privacy",
+      text: "We use necessary cookies to run the site and, with your permission, analytics cookies to understand how it is used and improve it. You can accept, decline or choose what to allow, and change your mind at any time.",
+      policy: "Privacy Policy (Portuguese)",
+      acceptAll: "Accept all",
+      rejectAll: "Decline optional",
+      customize: "Customize",
+      save: "Save preferences",
+      necessaryTitle: "Necessary",
+      necessaryText: "Language, your cookie choice and payment security. Always on.",
+      analyticsTitle: "Analytics",
+      analyticsText: "Google Analytics: aggregated page views, clicks and scrolling, to improve the site.",
+      marketingTitle: "Marketing",
+      marketingText: "Ads and remarketing. Not used today; reserved for future campaigns.",
+      alwaysOn: "Always on",
+    },
     footer: {
       rights: "All rights reserved.",
       inicio: "Home",
       portfolio: "Portfolio",
       contato: "Contact",
+      privacy: "Privacy",
+      cookies: "Cookies",
     },
   },
 }

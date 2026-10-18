@@ -4,6 +4,7 @@
 User-agent: *
 Allow: /
 Disallow: /cdn-cgi/
+Disallow: /api/
 
 # Rastreadores de IA / LLMs: liberados de propósito (visibilidade em ChatGPT, Claude, Perplexity, Gemini, etc.)
 User-agent: GPTBot

@@ -10,4 +10,10 @@
       <image:title>Monet Creative — Seu site no ar em dias, não meses.</image:title>
     </image:image>
   </url>
+  <url>
+    <loc>https://monetportfolio.pages.dev/privacidade</loc>
+    <lastmod>2026-10-18</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
 </urlset>

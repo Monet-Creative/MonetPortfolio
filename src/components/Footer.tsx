@@ -1,6 +1,7 @@
 import Logo from "./Logo"
 import { GITHUB_URL, useLanguage } from "../i18n"
 import { trackNav, trackSocial } from "../lib/analytics"
+import { openConsentPreferences } from "../lib/consent"
 
 export default function Footer() {
   const { t } = useLanguage()
@@ -12,7 +13,7 @@ export default function Footer() {
         <p className="text-xs text-paper/50">
           © {new Date().getFullYear()} Monet. {t.footer.rights}
         </p>
-        <div className="flex items-center gap-5 text-xs text-paper/50">
+        <div className="flex flex-wrap items-center justify-center gap-x-5 gap-y-2 text-xs text-paper/50">
           <a href="#inicio" onClick={() => trackNav(t.footer.inicio, "#inicio", "footer")} className="hover:text-paper">{t.footer.inicio}</a>
           <a href="#casos" onClick={() => trackNav(t.footer.portfolio, "#casos", "footer")} className="hover:text-paper">{t.footer.portfolio}</a>
           <a href="#contato" onClick={() => trackNav(t.footer.contato, "#contato", "footer")} className="hover:text-paper">{t.footer.contato}</a>
@@ -25,6 +26,8 @@ export default function Footer() {
           >
             GitHub
           </a>
+          <a href="/privacidade" className="hover:text-paper">{t.footer.privacy}</a>
+          <button type="button" onClick={openConsentPreferences} className="hover:text-paper">{t.footer.cookies}</button>
         </div>
       </div>
     </footer>

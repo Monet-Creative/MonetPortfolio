@@ -22,6 +22,11 @@ Atendimento em português (pt-BR) e inglês. Contato mais rápido: WhatsApp +55 
 - Criativos (imagens): 1 por R$ 35,00 · 3 por R$ 89,70 · 5 por R$ 129,50
 - Vídeos animados: 1 por R$ 60,00 · 3 por R$ 149,70 · 5 por R$ 229,50
 
+## Pagamento
+
+- Compra online pelo site com Mercado Pago: Pix, cartão de crédito/débito e boleto. Depois do pagamento o cliente envia o briefing por WhatsApp.
+- Política de privacidade e cookies (LGPD): https://monetportfolio.pages.dev/privacidade
+
 ## Contato
 
 - WhatsApp: https://wa.me/5583921565651

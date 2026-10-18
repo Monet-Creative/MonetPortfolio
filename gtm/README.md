@@ -28,7 +28,10 @@ Regenerar o JSON depois de mudar eventos: `node gtm/build-container.mjs`.
 | Evento (GA4) | Quando dispara | Parâmetros |
 |---|---|---|
 | `page_view` | Carregamento (tag Google tag, All Pages) | automático |
-| `generate_lead` | Clique em WhatsApp (hero, botão flutuante, FAQ, preços, contato) ou e-mail | `method` (whatsapp/email), `lead_location`, `offer_name`*, `value`*, `currency`* |
+| `generate_lead` | Clique em WhatsApp (hero, botão flutuante, FAQ, contato) ou e-mail | `method` (whatsapp/email), `lead_location` |
+| `begin_checkout` | Abriu a página de pagamento de um pacote | ecommerce: `currency`, `value`, `items[]` |
+| `add_payment_info` | Enviou o formulário de pagamento | ecommerce + `payment_type` |
+| `purchase` | Pagamento **aprovado** na resposta do servidor (cartão; Pix/boleto ficam pendentes) | ecommerce + `transaction_id` |
 | `social_click` | Clique em Instagram / GitHub | `network`, `link_location`, `link_url` |
 | `nav_click` | Clique no menu (header, header mobile, footer) | `link_text`, `link_url`, `link_location` |
 | `cta_click` | "Ver projetos" e "Fale conosco" | `cta_text`, `cta_location`, `link_url` |
@@ -40,21 +43,32 @@ Regenerar o JSON depois de mudar eventos: `node gtm/build-container.mjs`.
 | `section_view` | 1ª vez que cada seção entra na tela | `section_id` |
 | `scroll_depth` | Scroll 25/50/75/90% (gatilho nativo do GTM) | `percent_scrolled` |
 
-\* só nos cliques de **preços**: `offer_name` = `images_1|3|5`, `videos_1|3|5`, `landing_static`, `landing_admin`; `value` em BRL.
+`items[].item_id` = `images_1|3|5`, `videos_1|3|5`, `landing_static`, `landing_admin`; valores em BRL.
+`purchase` só dispara quando o servidor viu o status `approved`; Pix e boleto aprovados depois chegam pelo webhook (`/api/mp-webhook`), não pelo navegador.
 
-`lead_location`: `hero`, `floating_button`, `faq`, `pricing`, `contact`.
+`lead_location`: `hero`, `floating_button`, `faq`, `contact`.
 `section_id`: `inicio`, `servicos`, `casos`, `instagram`, `metodo`, `faq`, `precos`, `contato`.
 
 `faq_question` e `reel_title` seguem o idioma ativo; para análise estável use `faq_position` e `reel_position`.
 
 ## No GA4 (Admin) depois de publicar
 
-1. **Eventos → marcar como evento-chave**: `generate_lead`.
+1. **Eventos → marcar como evento-chave**: `generate_lead` e `purchase`.
 2. **Definições personalizadas → Dimensões personalizadas** (escopo **Evento**), criar:
-   `lead_location`, `method`, `offer_name`, `link_location`, `cta_location`, `case_title`, `pricing_tab`,
+   `lead_location`, `method`, `link_location`, `cta_location`, `case_title`, `pricing_tab`,
    `faq_question`, `reel_action`, `reel_position`, `site_language`, `section_id`, `network`.
    Sem isso os parâmetros chegam, mas não aparecem nos relatórios.
 3. **Fluxo de dados → Medição otimizada**: pode deixar ligada. Rolagem/cliques de saída nativos do GA4 coexistem com `scroll_depth`/`social_click` (nomes diferentes, sem duplicar).
+
+## LGPD / Consentimento (Consent Mode v2)
+
+- `index.html` define **tudo como negado** (`analytics_storage`, `ad_storage`, `ad_user_data`, `ad_personalization`) **antes** do GTM e reaplica a escolha guardada (`localStorage` → `monet-consent`).
+- O banner (`src/components/ConsentBanner.tsx`) tem Aceitar / Recusar / Personalizar com o mesmo peso visual; rodapé "Cookies" e `/#cookies` reabrem as preferências.
+- Todas as tags GA4 do container exigem `analytics_storage` (modo básico): **nada é enviado ao GA4 antes do aceite**. Ao aceitar, o site empurra `consent_analytics_granted` e a tag "Google tag" dispara (trigger `CE - consent_analytics_granted`), enviando o `page_view`.
+- Revogar estatísticas apaga os cookies `_ga*` do navegador.
+- Política: `public/privacidade.html` (URL `/privacidade`). Revise com seu jurídico e preencha razão social/CNPJ/encarregado se tiver.
+- No GA4: **Admin → Coleta de dados → Retenção de dados = 14 meses** (a política promete até 14).
+- Para testar no GTM Preview, limpe `localStorage` (ou use janela anônima) para ver o banner.
 
 ## Search Console
 

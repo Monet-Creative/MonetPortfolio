@@ -1,27 +1,25 @@
 import { useState, type ReactNode } from "react"
-import { useLanguage, whatsappLink } from "../i18n"
-import { track, trackLead } from "../lib/analytics"
-import { WhatsAppIcon } from "./WhatsAppButton"
+import { useLanguage } from "../i18n"
+import { track } from "../lib/analytics"
+import { OFFERS, type OfferId } from "../lib/catalog"
 
 type Tab = "images" | "videos" | "landing"
 type Badge = "popular" | "best"
 
-type Pack = { qty: number; total: number; badge?: Badge }
+type Pack = { qty: number; offer: OfferId; badge?: Badge }
 
 const PACKS: Record<"images" | "videos", Pack[]> = {
   images: [
-    { qty: 1, total: 35 },
-    { qty: 3, total: 89.7, badge: "popular" },
-    { qty: 5, total: 129.5, badge: "best" },
+    { qty: 1, offer: "images_1" },
+    { qty: 3, offer: "images_3", badge: "popular" },
+    { qty: 5, offer: "images_5", badge: "best" },
   ],
   videos: [
-    { qty: 1, total: 60 },
-    { qty: 3, total: 149.7, badge: "popular" },
-    { qty: 5, total: 229.5, badge: "best" },
+    { qty: 1, offer: "videos_1" },
+    { qty: 3, offer: "videos_3", badge: "popular" },
+    { qty: 5, offer: "videos_5", badge: "best" },
   ],
 }
-
-const LANDING_PRICES = { static: 649.9, admin: 799.9 }
 
 const brl = new Intl.NumberFormat("pt-BR", { style: "currency", currency: "BRL" })
 const formatPrice = (value: number) => brl.format(value).replace(/\s/g, " ")
@@ -56,30 +54,28 @@ function CheckIcon() {
   )
 }
 
-function CtaButton({
-  href,
-  label,
-  highlighted,
-  onClick,
-}: {
-  href: string
-  label: string
-  highlighted: boolean
-  onClick: () => void
-}) {
+function CardIcon() {
+  return (
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden>
+      <rect x="2.5" y="5" width="19" height="14" rx="3" stroke="currentColor" strokeWidth="1.8" />
+      <path d="M2.5 10h19M6.5 15h4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+    </svg>
+  )
+}
+
+// Opens the dedicated Payment Brick page (#/checkout/<offer>); the amount is decided server-side.
+function CtaButton({ offer, label, highlighted }: { offer: OfferId; label: string; highlighted: boolean }) {
   return (
     <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      onClick={onClick}
+      href={`#/checkout/${offer}`}
+      data-mp-checkout-cta="bricks"
       className={`mt-6 flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-[1.03] ${
         highlighted
           ? "bg-linear-to-r from-brand-primary to-brand-secondary text-white shadow-[0_8px_30px_-8px_rgba(78,59,254,0.7)]"
           : "border border-white/15 bg-white/5 text-paper hover:bg-white/10"
       }`}
     >
-      <WhatsAppIcon size={16} />
+      <CardIcon />
       {label}
     </a>
   )
@@ -115,9 +111,6 @@ export default function Pricing() {
     { key: "videos", label: p.tabs.videos },
     { key: "landing", label: p.tabs.landing },
   ]
-
-  const order = (item: string, price: string) =>
-    whatsappLink(p.ctaMessage.replace("{item}", item).replace("{price}", price))
 
   return (
     <section id="precos" className="px-6 py-24">
@@ -162,10 +155,10 @@ export default function Pricing() {
 
         {tab !== "landing" ? (
           <div role="tabpanel" className="mx-auto mt-10 grid max-w-md grid-cols-1 gap-6 md:max-w-none md:grid-cols-3">
-            {PACKS[tab].map(({ qty, total, badge }) => {
+            {PACKS[tab].map(({ qty, offer, badge }) => {
               const [singular, plural] = p.unit[tab]
               const title = qty === 1 ? p.packSingle : p.packMulti.replace("{n}", String(qty)).replace("{unit}", plural)
-              const item = qty === 1 ? `${p.packSingle} (1 ${singular})` : title
+              const total = OFFERS[offer].price
               const price = formatPrice(total)
               return (
                 <CardFrame
@@ -185,14 +178,7 @@ export default function Pricing() {
                     {qty === 1 ? `1 ${singular}` : `${formatPrice(total / qty)} ${p.each}`}
                   </p>
                   <div className="flex-1" />
-                  <CtaButton
-                    href={order(item, price)}
-                    label={p.cta}
-                    highlighted={badge === "popular"}
-                    onClick={() =>
-                      trackLead("whatsapp", "pricing", { offer_name: `${tab}_${qty}`, value: total, currency: "BRL" })
-                    }
-                  />
+                  <CtaButton offer={offer} label={p.pay} highlighted={badge === "popular"} />
                 </CardFrame>
               )
             })}
@@ -201,7 +187,8 @@ export default function Pricing() {
           <div role="tabpanel" className="mx-auto mt-12 grid max-w-md grid-cols-1 gap-6 md:max-w-3xl md:grid-cols-2">
             {(["static", "admin"] as const).map((key) => {
               const item = p.landing[key]
-              const price = formatPrice(LANDING_PRICES[key])
+              const offer: OfferId = key === "static" ? "landing_static" : "landing_admin"
+              const price = formatPrice(OFFERS[offer].price)
               const isAdmin = key === "admin"
               return (
                 <CardFrame key={key} highlighted={isAdmin} badge={isAdmin ? p.landing.admin.badge : undefined}>
@@ -217,18 +204,7 @@ export default function Pricing() {
                     ))}
                   </ul>
                   <div className="flex-1" />
-                  <CtaButton
-                    href={order(item.title, price)}
-                    label={p.cta}
-                    highlighted={isAdmin}
-                    onClick={() =>
-                      trackLead("whatsapp", "pricing", {
-                        offer_name: `landing_${key}`,
-                        value: LANDING_PRICES[key],
-                        currency: "BRL",
-                      })
-                    }
-                  />
+                  <CtaButton offer={offer} label={p.pay} highlighted={isAdmin} />
                 </CardFrame>
               )
             })}

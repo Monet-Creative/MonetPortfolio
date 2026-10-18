@@ -3,6 +3,28 @@
   <head>
     <meta charset="UTF-8" />
 
+    <!-- Consent Mode v2 (LGPD): everything denied until the visitor chooses; a stored choice is replayed. Must run before GTM. -->
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('consent', 'default', {
+        ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied',
+        functionality_storage: 'granted', security_storage: 'granted', wait_for_update: 500
+      });
+      gtag('set', 'ads_data_redaction', true);
+      try {
+        var c = JSON.parse(localStorage.getItem('monet-consent'));
+        if (c && c.v === 1) {
+          gtag('consent', 'update', {
+            analytics_storage: c.analytics ? 'granted' : 'denied',
+            ad_storage: c.marketing ? 'granted' : 'denied',
+            ad_user_data: c.marketing ? 'granted' : 'denied',
+            ad_personalization: c.marketing ? 'granted' : 'denied'
+          });
+        }
+      } catch (e) {}
+    </script>
+
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
     new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -100,6 +122,7 @@
           "description": "Agência que cria sites, landing pages, convites digitais e sistemas sob medida, desenvolvidos com inteligência artificial. Também produz criativos e vídeos para Instagram.",
           "email": "contato.monetcreative@gmail.com",
           "telephone": "+55 83 92156-5651",
+          "paymentAccepted": "Pix, cartão de crédito, cartão de débito, boleto (via Mercado Pago)",
           "areaServed": { "@type": "Country", "name": "Brasil" },
           "availableLanguage": ["pt-BR", "en"],
           "knowsAbout": ["Criação de sites", "Landing pages", "Sistemas web sob medida", "Convites digitais", "Design gráfico", "Motion graphics", "SEO"],

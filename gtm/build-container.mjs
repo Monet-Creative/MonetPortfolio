@@ -13,7 +13,11 @@ const CONTAINER = "0"
 const ALL_PAGES = "2147479553" // trigger nativo "All Pages"
 
 const EVENTS = [
-  { name: "generate_lead", params: ["method", "lead_location", "offer_name", "value", "currency"] },
+  { name: "generate_lead", params: ["method", "lead_location"] },
+  // GA4 ecommerce events: the site pushes an `ecommerce` object, GTM forwards it as-is.
+  { name: "begin_checkout", params: [], ecommerce: true },
+  { name: "add_payment_info", params: [], ecommerce: true },
+  { name: "purchase", params: [], ecommerce: true },
   { name: "social_click", params: ["network", "link_location", "link_url"] },
   { name: "nav_click", params: ["link_text", "link_url", "link_location"] },
   { name: "cta_click", params: ["cta_text", "cta_location", "link_url"] },
@@ -113,13 +117,23 @@ const scrollTrigger = {
 triggers.push(scrollTrigger)
 
 // --- tags ---
+// LGPD: every measurement tag requires analytics_storage consent (Consent Mode v2, "basic" mode:
+// nothing is sent before the visitor accepts statistics cookies). Defaults are set in index.html.
 const tagCommon = {
   ...base,
   fingerprint: "0",
   tagFiringOption: "ONCE_PER_EVENT",
   monitoringMetadata: { type: "MAP" },
-  consentSettings: { consentStatus: "NOT_SET" },
+  consentSettings: {
+    consentStatus: "NEEDED",
+    consentType: { type: "LIST", list: [{ type: "TEMPLATE", value: "analytics_storage" }] },
+  },
 }
+
+// A tag blocked by missing consent is not retried later, so the site pushes
+// `consent_analytics_granted` when the visitor accepts statistics and the config tag fires then
+// (sending the page_view that was held back). Returning visitors are covered by All Pages.
+const consentGranted = customEvent("consent_analytics_granted")
 
 const tags = [
   {
@@ -128,31 +142,36 @@ const tags = [
     name: CONFIG_TAG,
     type: "googtag",
     parameter: [{ type: "TEMPLATE", key: "tagId", value: `{{${CONST_VAR}}}` }],
-    firingTriggerId: [ALL_PAGES],
+    firingTriggerId: [ALL_PAGES, consentGranted],
     parentFolderId: folders.ga4.folderId,
   },
 ]
 
-const ga4Event = (eventName, settings, triggerId) => ({
+const ga4Event = (eventName, settings, triggerId, ecommerce = false) => ({
   ...tagCommon,
   tagId: id(),
   name: `GA4 - Evento - ${eventName}`,
   type: "gaawe",
   parameter: [
-    { type: "BOOLEAN", key: "sendEcommerceData", value: "false" },
+    { type: "BOOLEAN", key: "sendEcommerceData", value: String(ecommerce) },
+    ...(ecommerce ? [{ type: "TEMPLATE", key: "getEcommerceDataFrom", value: "dataLayer" }] : []),
     { type: "TEMPLATE", key: "eventName", value: eventName },
     { type: "TEMPLATE", key: "measurementIdOverride", value: `{{${CONST_VAR}}}` },
-    {
-      type: "LIST",
-      key: "eventSettingsTable",
-      list: settings.map(([parameter, parameterValue]) => ({
-        type: "MAP",
-        map: [
-          { type: "TEMPLATE", key: "parameter", value: parameter },
-          { type: "TEMPLATE", key: "parameterValue", value: parameterValue },
-        ],
-      })),
-    },
+    ...(settings.length
+      ? [
+          {
+            type: "LIST",
+            key: "eventSettingsTable",
+            list: settings.map(([parameter, parameterValue]) => ({
+              type: "MAP",
+              map: [
+                { type: "TEMPLATE", key: "parameter", value: parameter },
+                { type: "TEMPLATE", key: "parameterValue", value: parameterValue },
+              ],
+            })),
+          },
+        ]
+      : []),
   ],
   firingTriggerId: [triggerId],
   parentFolderId: folders.events.folderId,
@@ -164,6 +183,7 @@ for (const ev of EVENTS) {
       ev.name,
       ev.params.map((p) => [p, `{{${dlvName(p)}}}`]),
       customEvent(ev.name),
+      ev.ecommerce === true,
     ),
   )
 }
