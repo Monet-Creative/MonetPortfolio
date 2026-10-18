@@ -172,6 +172,16 @@ type Dictionary = {
     contato: string
     privacy: string
     cookies: string
+    tagline: string
+    navTitle: string
+    contactTitle: string
+    legalTitle: string
+    payTitle: string
+    payNote: string
+    pix: string
+    credit: string
+    debit: string
+    boleto: string
   }
 }
 
@@ -433,6 +443,16 @@ const dictionaries: Record<Lang, Dictionary> = {
       contato: "Contato",
       privacy: "Privacidade",
       cookies: "Cookies",
+      tagline: "Sites, landing pages e sistemas que transformam visitas em clientes.",
+      navTitle: "Navegação",
+      contactTitle: "Contato",
+      legalTitle: "Legal",
+      payTitle: "Formas de pagamento",
+      payNote: "Pagamento processado com segurança pelo Mercado Pago. Parcelamos no cartão de crédito.",
+      pix: "Pix",
+      credit: "Cartão de crédito",
+      debit: "Cartão de débito",
+      boleto: "Boleto",
     },
   },
   en: {
@@ -692,6 +712,16 @@ const dictionaries: Record<Lang, Dictionary> = {
       contato: "Contact",
       privacy: "Privacy",
       cookies: "Cookies",
+      tagline: "Websites, landing pages and systems that turn visits into clients.",
+      navTitle: "Navigate",
+      contactTitle: "Contact",
+      legalTitle: "Legal",
+      payTitle: "Payment methods",
+      payNote: "Payments securely processed by Mercado Pago. Credit card installments available.",
+      pix: "Pix",
+      credit: "Credit card",
+      debit: "Debit card",
+      boleto: "Boleto",
     },
   },
 }
