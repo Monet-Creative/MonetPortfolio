@@ -5,7 +5,7 @@
 | Container GTM | `GTM-NV7MXJHN` |
 | Propriedade GA4 (Measurement ID) | `G-E7JQV3MPT5` |
 | Search Console | meta `google-site-verification` no `<head>` de `index.html` |
-| Site | https://monetportfolio.pages.dev/ |
+| Site | https://www.monetcreative.com.br/ |
 
 ## Arquitetura
 
@@ -72,7 +72,7 @@ Regenerar o JSON depois de mudar eventos: `node gtm/build-container.mjs`.
 
 ## Search Console
 
-- Propriedade **Prefixo do URL** `https://monetportfolio.pages.dev/` → método **Tag HTML** (a meta já está no site, publicar antes de clicar em Verificar).
+- Propriedade **Prefixo do URL** `https://www.monetcreative.com.br/` → método **Tag HTML** (a meta já está no site, publicar antes de clicar em Verificar).
 - O texto `google-site-verification=...` colado originalmente é a forma **registro DNS TXT**; vale para propriedade de **Domínio** (domínio próprio). `*.pages.dev` não permite DNS: use a tag HTML.
 - Se a verificação por tag falhar, método alternativo: **Google Tag Manager** (usa o snippet já instalado).
 - Depois: **Sitemaps → enviar** `sitemap.xml`.
@@ -87,4 +87,4 @@ Regenerar o JSON depois de mudar eventos: `node gtm/build-container.mjs`.
 
 `robots.txt` · `sitemap.xml` · `llms.txt` · `llms-full.txt` · `og-image.png` · `404.html` · `_headers` (cache + segurança, Cloudflare Pages).
 Dados estruturados (Organization, WebSite, WebPage, FAQPage, OfferCatalog) estão em `index.html`.
-Se o site ganhar domínio próprio, troque `https://monetportfolio.pages.dev` por ele em `index.html`, `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt`.
+Se o site ganhar domínio próprio, troque `https://www.monetcreative.com.br` por ele em `index.html`, `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt`.

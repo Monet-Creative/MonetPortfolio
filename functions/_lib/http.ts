@@ -3,7 +3,7 @@
 //   MP_ACCESS_TOKEN    Mercado Pago access token (server only)
 //   MP_PUBLIC_KEY      Mercado Pago public key (served to the Bricks via /api/mp-config)
 //   MP_WEBHOOK_SECRET  signature secret from the Mercado Pago webhooks panel
-//   APP_URL            optional public origin, e.g. https://monetportfolio.pages.dev
+//   APP_URL            optional public origin, e.g. https://www.monetcreative.com.br
 
 export interface Env {
   MP_ACCESS_TOKEN?: string

@@ -3,4 +3,4 @@
 MP_ACCESS_TOKEN=APP_USR-...      # server only
 MP_PUBLIC_KEY=APP_USR-...        # served to the Bricks via /api/mp-config
 MP_WEBHOOK_SECRET=...            # Your integrations -> Webhooks -> signature secret
-# APP_URL=https://monetportfolio.pages.dev   # optional; defaults to the request origin
+# APP_URL=https://www.monetcreative.com.br   # optional; defaults to the request origin

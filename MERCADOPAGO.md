@@ -25,7 +25,7 @@ Fluxo: botão **Realizar pagamento** nos preços → página `#/checkout/<pacote
    ```
 
    (ou Dashboard → Pages → projeto → Settings → Variables and Secrets).
-3. **Webhooks** (painel do MP): URL `https://monetportfolio.pages.dev/api/mp-webhook`, evento **Pagamentos**; copie a *chave secreta* para `MP_WEBHOOK_SECRET`.
+3. **Webhooks** (painel do MP): URL `https://www.monetcreative.com.br/api/mp-webhook`, evento **Pagamentos**; copie a *chave secreta* para `MP_WEBHOOK_SECRET`.
 4. Publicar de novo o site (as Functions só entram no deploy seguinte aos segredos).
 
 ## Testar localmente

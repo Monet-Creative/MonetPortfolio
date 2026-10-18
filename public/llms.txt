@@ -6,14 +6,14 @@ Atendimento em português (pt-BR) e inglês. Contato mais rápido: WhatsApp +55 
 
 ## Site
 
-- [Início](https://monetportfolio.pages.dev/#inicio): proposta de valor — site no ar em dias, não meses
-- [Serviços](https://monetportfolio.pages.dev/#servicos): landing pages, eventos e convites com RSVP, sites institucionais, sistemas sob medida
-- [Portfólio](https://monetportfolio.pages.dev/#casos): Chá Revelação, Aviator, Gaming Code, Essenza Estética
-- [Instagram](https://monetportfolio.pages.dev/#instagram): vídeos do feed da agência
-- [Método](https://monetportfolio.pages.dev/#metodo): 4 etapas — alinhamento, layout, desenvolvimento, publicação
-- [FAQ](https://monetportfolio.pages.dev/#faq): prazos, custos, propriedade do código, suporte
-- [Preços](https://monetportfolio.pages.dev/#precos): tabela de valores em reais
-- [Contato](https://monetportfolio.pages.dev/#contato): WhatsApp, Instagram e e-mail
+- [Início](https://www.monetcreative.com.br/#inicio): proposta de valor — site no ar em dias, não meses
+- [Serviços](https://www.monetcreative.com.br/#servicos): landing pages, eventos e convites com RSVP, sites institucionais, sistemas sob medida
+- [Portfólio](https://www.monetcreative.com.br/#casos): Chá Revelação, Aviator, Gaming Code, Essenza Estética
+- [Instagram](https://www.monetcreative.com.br/#instagram): vídeos do feed da agência
+- [Método](https://www.monetcreative.com.br/#metodo): 4 etapas — alinhamento, layout, desenvolvimento, publicação
+- [FAQ](https://www.monetcreative.com.br/#faq): prazos, custos, propriedade do código, suporte
+- [Preços](https://www.monetcreative.com.br/#precos): tabela de valores em reais
+- [Contato](https://www.monetcreative.com.br/#contato): WhatsApp, Instagram e e-mail
 
 ## Preços (R$)
 
@@ -25,7 +25,7 @@ Atendimento em português (pt-BR) e inglês. Contato mais rápido: WhatsApp +55 
 ## Pagamento
 
 - Compra online pelo site com Mercado Pago: Pix, cartão de crédito/débito e boleto. Depois do pagamento o cliente envia o briefing por WhatsApp.
-- Política de privacidade e cookies (LGPD): https://monetportfolio.pages.dev/privacidade
+- Política de privacidade e cookies (LGPD): https://www.monetcreative.com.br/privacidade
 
 ## Contato
 
@@ -36,5 +36,5 @@ Atendimento em português (pt-BR) e inglês. Contato mais rápido: WhatsApp +55 
 
 ## Optional
 
-- [Versão completa deste resumo (preços, FAQ, método, stack)](https://monetportfolio.pages.dev/llms-full.txt)
-- [Sitemap](https://monetportfolio.pages.dev/sitemap.xml)
+- [Versão completa deste resumo (preços, FAQ, método, stack)](https://www.monetcreative.com.br/llms-full.txt)
+- [Sitemap](https://www.monetcreative.com.br/sitemap.xml)

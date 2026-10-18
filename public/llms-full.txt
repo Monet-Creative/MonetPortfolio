@@ -1,6 +1,6 @@
 # Monet Creative — conteúdo completo
 
-> Monet Creative (Monet) é uma agência brasileira que cria sites, landing pages, convites digitais e sistemas sob medida, desenvolvidos com inteligência artificial. Fonte: https://monetportfolio.pages.dev/
+> Monet Creative (Monet) é uma agência brasileira que cria sites, landing pages, convites digitais e sistemas sob medida, desenvolvidos com inteligência artificial. Fonte: https://www.monetcreative.com.br/
 
 ## Quem somos
 
@@ -84,7 +84,7 @@ Os pacotes de imagens, vídeos e landing pages podem ser comprados direto no sit
 
 ## Privacidade (LGPD)
 
-Política de privacidade e cookies: https://monetportfolio.pages.dev/privacidade . Cookies de estatísticas só são ativados com consentimento.
+Política de privacidade e cookies: https://www.monetcreative.com.br/privacidade . Cookies de estatísticas só são ativados com consentimento.
 
 ## Contato
 

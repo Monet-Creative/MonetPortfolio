@@ -1,4 +1,4 @@
-# Monet Creative — https://monetportfolio.pages.dev/
+# Monet Creative — https://www.monetcreative.com.br/
 # Todo o conteúdo público pode ser indexado, inclusive por buscadores de IA.
 
 User-agent: *
@@ -21,5 +21,5 @@ User-agent: Applebot-Extended
 User-agent: CCBot
 Allow: /
 
-# Resumo do site para LLMs: https://monetportfolio.pages.dev/llms.txt
-Sitemap: https://monetportfolio.pages.dev/sitemap.xml
+# Resumo do site para LLMs: https://www.monetcreative.com.br/llms.txt
+Sitemap: https://www.monetcreative.com.br/sitemap.xml
