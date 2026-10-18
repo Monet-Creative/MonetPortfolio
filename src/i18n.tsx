@@ -249,7 +249,7 @@ const dictionaries: Record<Lang, Dictionary> = {
       each: "cada",
       popular: "Mais Popular",
       bestValue: "Melhor Valor",
-      pay: "Pagar com Mercado Pago",
+      pay: "Realizar pagamento",
       landing: {
         static: {
           title: "Landing Page Estática",
@@ -507,7 +507,7 @@ const dictionaries: Record<Lang, Dictionary> = {
       each: "each",
       popular: "Most Popular",
       bestValue: "Best Value",
-      pay: "Pay with Mercado Pago",
+      pay: "Make payment",
       landing: {
         static: {
           title: "Static Landing Page",

@@ -1,6 +1,6 @@
 # Pagamentos — Mercado Pago (Checkout Bricks, Payment Brick)
 
-Fluxo: botão **Pagar com Mercado Pago** nos preços → página `#/checkout/<pacote>` (Payment Brick: cartão, Pix, boleto) →
+Fluxo: botão **Realizar pagamento** nos preços → página `#/checkout/<pacote>` (Payment Brick: cartão, Pix, boleto) →
 `POST /api/payments` (Cloudflare Pages Function) cria o pagamento na Payments API → página de resultado com o StatusScreen Brick
 + botão para enviar o briefing por WhatsApp.
 
