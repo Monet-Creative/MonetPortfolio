@@ -1,0 +1,24 @@
+# Monet Creative — https://monetportfolio.pages.dev/
+# Todo o conteúdo público pode ser indexado, inclusive por buscadores de IA.
+
+User-agent: *
+Allow: /
+Disallow: /cdn-cgi/
+
+# Rastreadores de IA / LLMs: liberados de propósito (visibilidade em ChatGPT, Claude, Perplexity, Gemini, etc.)
+User-agent: GPTBot
+User-agent: OAI-SearchBot
+User-agent: ChatGPT-User
+User-agent: ClaudeBot
+User-agent: Claude-SearchBot
+User-agent: Claude-User
+User-agent: anthropic-ai
+User-agent: PerplexityBot
+User-agent: Perplexity-User
+User-agent: Google-Extended
+User-agent: Applebot-Extended
+User-agent: CCBot
+Allow: /
+
+# Resumo do site para LLMs: https://monetportfolio.pages.dev/llms.txt
+Sitemap: https://monetportfolio.pages.dev/sitemap.xml

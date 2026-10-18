@@ -1,4 +1,5 @@
 import { useLanguage, type Lang } from "../i18n"
+import { track } from "../lib/analytics"
 
 const OPTIONS: { value: Lang; label: string }[] = [
   { value: "pt", label: "BR" },
@@ -21,7 +22,10 @@ export default function LanguageSwitch() {
             key={option.value}
             type="button"
             aria-pressed={active}
-            onClick={() => setLang(option.value)}
+            onClick={() => {
+              if (!active) track("language_change", { site_language: option.value })
+              setLang(option.value)
+            }}
             className={`rounded-full px-2.5 py-1 text-xs font-semibold tracking-wide transition-colors ${
               active ? "bg-paper text-ink" : "text-paper/45 hover:text-paper/70"
             }`}

@@ -1,0 +1,86 @@
+# Monet Creative — conteúdo completo
+
+> Monet Creative (Monet) é uma agência brasileira que cria sites, landing pages, convites digitais e sistemas sob medida, desenvolvidos com inteligência artificial. Fonte: https://monetportfolio.pages.dev/
+
+## Quem somos
+
+A Monet constrói sites e sistemas usando IA para acelerar código e revisões; as decisões de design e de negócio continuam com a equipe. O resultado é menos tempo e menos custo para o cliente. Promessa central: "Seu site no ar em dias, não meses."
+
+Destaques:
+- Landing pages em 3 a 7 dias úteis
+- 100% responsivo (celular, tablet e desktop)
+- Código e acessos são do cliente após a quitação
+
+## Serviços
+
+- **Landing pages** — uma página focada em um objetivo: vender, captar contatos ou divulgar um lançamento. Prazo: 3 a 7 dias úteis.
+- **Eventos e convites** — convites digitais para chás, aniversários e casamentos, com confirmação de presença (RSVP) online.
+- **Sites institucionais** — presença online da empresa, com páginas de serviços, sobre e contato (multipáginas).
+- **Sistemas sob medida** — painéis, cadastros e automações para organizar a operação do negócio (web apps).
+- **Design e conteúdo para Instagram** — criativos (imagens para posts) e vídeos animados.
+
+## Preços (valores em reais)
+
+### Landing pages
+- Landing Page Estática — R$ 649,90. Página focada em conversão, 100% responsiva, entrega em 3 a 7 dias úteis, código e acessos do cliente.
+- Landing Page com Painel Administrativo — R$ 799,90. Tudo da estática, mais painel administrativo para o cliente atualizar textos, fotos e informações sozinho.
+
+### Criativos (imagens) — promoção
+- Pacote Único (1 imagem): R$ 35,00
+- Pacote 3 Imagens: R$ 89,70 (R$ 29,90 cada)
+- Pacote 5 Imagens: R$ 129,50 (R$ 25,90 cada)
+
+### Vídeos animados — promoção
+- Pacote Único (1 vídeo): R$ 60,00
+- Pacote 3 Vídeos: R$ 149,70 (R$ 49,90 cada)
+- Pacote 5 Vídeos: R$ 229,50 (R$ 45,90 cada)
+
+## Método — 4 etapas
+
+1. **Alinhamento** — conversa sobre o negócio, objetivo e público para definir escopo, prazo e orçamento.
+2. **Layout** — criação do visual da página e ajustes com o cliente até a aprovação.
+3. **Desenvolvimento** — site com código limpo, rápido e testado em celular, tablet e desktop.
+4. **Publicação** — site no ar com o domínio do cliente e entrega de todos os acessos.
+
+Tecnologias: React, TypeScript, Tailwind, Node.js, Python, PostgreSQL, MySQL, Git.
+
+## Portfólio
+
+- Chá Revelação — eventos (convite digital)
+- Aviator — aviação: https://lpaviatorinfo.pages.dev/
+- Gaming Code — jogos: https://gaming-code.vercel.app/pg-home.html
+- Essenza Estética — estética e saúde: https://essenzaestetica-lp.pages.dev/
+- Mais projetos: https://github.com/Monet-Creative
+
+## Perguntas frequentes
+
+**Quanto tempo leva para o projeto ficar pronto?**
+O prazo varia conforme a complexidade. Landing pages costumam levar entre 3 e 7 dias úteis, enquanto sites institucionais ou sistemas sob medida têm prazos definidos após o briefing inicial e alinhamento dos requisitos.
+
+**Como funciona o processo de desenvolvimento?**
+Quatro etapas: alinhamento inicial para entender as necessidades, criação e aprovação do layout, desenvolvimento técnico com testes rigorosos, e publicação final com entrega dos acessos.
+
+**O site funciona perfeitamente em celulares e tablets?**
+Sim. Todos os projetos são 100% responsivos, leves e otimizados para carregar rápido em qualquer tela ou dispositivo.
+
+**Terei custos adicionais após a entrega?**
+O desenvolvimento é pago uma única vez. Custos recorrentes normais da internet incluem apenas o registro do domínio (anual) e a hospedagem (mensal/anual); a Monet orienta toda essa configuração.
+
+**O site ou sistema será totalmente meu?**
+Sim. Após a finalização e quitação do projeto, todos os acessos, arquivos, banco de dados e direitos pertencem integralmente ao cliente ou à empresa dele.
+
+**Consigo atualizar o conteúdo do site por conta própria?**
+Sim. A solução é estruturada para que o cliente altere textos, fotos e informações básicas com facilidade, sem depender de suporte técnico para ajustes do dia a dia.
+
+**E se eu encontrar algum erro ou precisar de suporte após o lançamento?**
+Há um período de garantia pós-entrega para correção de qualquer instabilidade ou ajuste técnico, além de planos contínuos de suporte e manutenção, se o cliente preferir.
+
+**Como solicito um orçamento?**
+Basta chamar no WhatsApp ou enviar um e-mail explicando a ideia. A Monet retorna rapidamente com uma proposta detalhada e sob medida.
+
+## Contato
+
+- WhatsApp: +55 83 92156-5651 — https://wa.me/5583921565651 (canal mais rápido)
+- E-mail: contato.monetcreative@gmail.com
+- Instagram: https://www.instagram.com/monetcreative_
+- GitHub: https://github.com/Monet-Creative

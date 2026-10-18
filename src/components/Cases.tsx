@@ -1,4 +1,5 @@
 import { GITHUB_URL, useLanguage } from "../i18n"
+import { track, trackSocial } from "../lib/analytics"
 import chaRevelacaoImage from "../assets/ChaRevelacaoImage.jpg"
 import aviatorImage from "../assets/AviatorImage.jpg"
 import gamingCodeImage from "../assets/GamingCodeImage.jpg"
@@ -38,6 +39,7 @@ export default function Cases() {
             href={GITHUB_URL}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackSocial("github", "cases", GITHUB_URL)}
             className="shrink-0 text-sm text-paper/60 transition-colors hover:text-paper"
           >
             {t.cases.link}
@@ -58,7 +60,7 @@ export default function Cases() {
                   <div className="aspect-16/10 overflow-hidden">
                     <img
                       src={CASE_IMAGES[i]}
-                      alt=""
+                      alt={`${item.title} — ${item.tag}`}
                       loading="lazy"
                       decoding="async"
                       className="h-full w-full object-cover object-top transition-transform duration-500 group-hover:scale-105"
@@ -99,6 +101,7 @@ export default function Cases() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
+                onClick={() => track("case_click", { case_title: item.title, link_url: href })}
                 className={`${CARD_CLASS} hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/6`}
               >
                 {body}

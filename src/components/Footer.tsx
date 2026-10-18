@@ -1,5 +1,6 @@
 import Logo from "./Logo"
 import { GITHUB_URL, useLanguage } from "../i18n"
+import { trackNav, trackSocial } from "../lib/analytics"
 
 export default function Footer() {
   const { t } = useLanguage()
@@ -12,10 +13,18 @@ export default function Footer() {
           © {new Date().getFullYear()} Monet. {t.footer.rights}
         </p>
         <div className="flex items-center gap-5 text-xs text-paper/50">
-          <a href="#inicio" className="hover:text-paper">{t.footer.inicio}</a>
-          <a href="#casos" className="hover:text-paper">{t.footer.portfolio}</a>
-          <a href="#contato" className="hover:text-paper">{t.footer.contato}</a>
-          <a href={GITHUB_URL} target="_blank" rel="noopener noreferrer" className="hover:text-paper">GitHub</a>
+          <a href="#inicio" onClick={() => trackNav(t.footer.inicio, "#inicio", "footer")} className="hover:text-paper">{t.footer.inicio}</a>
+          <a href="#casos" onClick={() => trackNav(t.footer.portfolio, "#casos", "footer")} className="hover:text-paper">{t.footer.portfolio}</a>
+          <a href="#contato" onClick={() => trackNav(t.footer.contato, "#contato", "footer")} className="hover:text-paper">{t.footer.contato}</a>
+          <a
+            href={GITHUB_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => trackSocial("github", "footer", GITHUB_URL)}
+            className="hover:text-paper"
+          >
+            GitHub
+          </a>
         </div>
       </div>
     </footer>

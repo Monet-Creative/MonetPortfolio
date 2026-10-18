@@ -1,4 +1,5 @@
 import { useLanguage, whatsappLink } from "../i18n"
+import { trackCta, trackLead } from "../lib/analytics"
 import { WhatsAppIcon } from "./WhatsAppButton"
 
 export default function Hero() {
@@ -34,6 +35,7 @@ export default function Hero() {
             href={whatsappLink(t.whatsapp.message)}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackLead("whatsapp", "hero")}
             className="group flex w-full items-center justify-center gap-2.5 rounded-full bg-paper py-2 pr-6 pl-2 text-sm font-semibold text-ink shadow-[0_8px_40px_-8px_rgba(20,198,253,0.45)] transition-all hover:scale-[1.03] hover:shadow-[0_8px_50px_-6px_rgba(20,198,253,0.65)] sm:w-auto"
           >
             <span className="flex h-8 w-8 items-center justify-center rounded-full bg-[#25D366]">
@@ -43,6 +45,7 @@ export default function Hero() {
           </a>
           <a
             href="#casos"
+            onClick={() => trackCta(t.hero.ctaSecondary, "hero", "#casos")}
             className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/3 px-6 py-3 text-sm font-semibold text-paper backdrop-blur transition-colors hover:border-white/30 hover:bg-white/8 sm:w-auto"
           >
             {t.hero.ctaSecondary}

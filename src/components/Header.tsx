@@ -2,6 +2,7 @@ import { useState } from "react"
 import Logo from "./Logo"
 import LanguageSwitch from "./LanguageSwitch"
 import { useLanguage } from "../i18n"
+import { trackCta, trackNav } from "../lib/analytics"
 
 export default function Header() {
   const [open, setOpen] = useState(false)
@@ -28,6 +29,7 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
+              onClick={() => trackNav(link.label, link.href, "header")}
               className="text-sm text-paper/60 transition-colors hover:text-paper"
             >
               {link.label}
@@ -39,6 +41,7 @@ export default function Header() {
           <LanguageSwitch />
           <a
             href="#contato"
+            onClick={() => trackCta(t.nav.contato, "header", "#contato")}
             className="rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-paper transition-colors hover:bg-white/10"
           >
             {t.nav.contato}
@@ -68,7 +71,10 @@ export default function Header() {
             <a
               key={link.href}
               href={link.href}
-              onClick={() => setOpen(false)}
+              onClick={() => {
+                trackNav(link.label, link.href, "header_mobile")
+                setOpen(false)
+              }}
               className="text-sm text-paper/70 hover:text-paper"
             >
               {link.label}
@@ -76,7 +82,10 @@ export default function Header() {
           ))}
           <a
             href="#contato"
-            onClick={() => setOpen(false)}
+            onClick={() => {
+              trackCta(t.nav.contato, "header_mobile", "#contato")
+              setOpen(false)
+            }}
             className="mt-2 rounded-full border border-white/15 bg-white/5 px-5 py-2 text-center text-sm font-medium text-paper"
           >
             {t.nav.contato}

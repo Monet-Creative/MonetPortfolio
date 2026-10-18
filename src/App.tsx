@@ -1,3 +1,4 @@
+import { useEffect } from "react"
 import Header from "./components/Header"
 import Hero from "./components/Hero"
 import ClientLogos from "./components/ClientLogos"
@@ -11,8 +12,11 @@ import Contact from "./components/Contact"
 import Footer from "./components/Footer"
 import WhatsAppButton from "./components/WhatsAppButton"
 import { LanguageProvider } from "./i18n"
+import { observeSectionViews } from "./lib/analytics"
 
 export default function App() {
+  useEffect(() => observeSectionViews(), [])
+
   return (
     <LanguageProvider>
       <div className="min-h-screen bg-black">

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react"
 import { INSTAGRAM_URL, useLanguage } from "../i18n"
+import { track, trackSocial } from "../lib/analytics"
 import clinicaClientesVideo from "../assets/reels/clinica-clientes.mp4"
 import clinicaClientesFrame from "../assets/reels/clinica-clientes-frame.jpg"
 import painelClinicaVideo from "../assets/reels/painel-clinica.mp4"
@@ -78,9 +79,14 @@ export default function Reels() {
     }
   }, [active, inView, wantPlay])
 
-  function select(index: number) {
+  function trackReel(action: string, index = active) {
+    track("reel_interaction", { reel_action: action, reel_title: t.reels.titles[index], reel_position: index + 1 })
+  }
+
+  function select(index: number, manual = true) {
     const next = (index + REELS.length) % REELS.length
     if (next === active) return
+    if (manual) trackReel("select", next)
     setProgress(0)
     setPlaying(false)
     setActive(next)
@@ -105,6 +111,7 @@ export default function Reels() {
             href={INSTAGRAM_URL}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackSocial("instagram", "reels_header", INSTAGRAM_URL)}
             className="shrink-0 text-sm text-paper/60 transition-colors hover:text-paper"
           >
             @monetcreative_ →
@@ -135,7 +142,7 @@ export default function Reels() {
                 }`}
                 style={{ transform: `translateX(${offset * 96}%) scale(${isActive ? 1 : 0.8})` }}
               >
-                <img src={reel.frame} alt="" loading="lazy" decoding="async" className="h-full w-full object-contain" />
+                <img src={reel.frame} alt={t.reels.titles[i]} loading="lazy" decoding="async" className="h-full w-full object-contain" />
 
                 {isActive ? (
                   <>
@@ -150,12 +157,18 @@ export default function Reels() {
                       onPlay={() => setPlaying(true)}
                       onPause={() => setPlaying(false)}
                       onTimeUpdate={(e) => setProgress(e.currentTarget.currentTime / e.currentTarget.duration || 0)}
-                      onEnded={() => select(active + 1)}
+                      onEnded={() => {
+                        trackReel("complete")
+                        select(active + 1, false)
+                      }}
                     />
 
                     <button
                       type="button"
-                      onClick={() => setWantPlay(!playing)}
+                      onClick={() => {
+                        trackReel(playing ? "pause" : "play")
+                        setWantPlay(!playing)
+                      }}
                       aria-label={playing ? t.reels.pause : t.reels.play}
                       className="absolute inset-0 flex items-center justify-center"
                     >
@@ -172,7 +185,10 @@ export default function Reels() {
 
                     <button
                       type="button"
-                      onClick={() => setMuted((m) => !m)}
+                      onClick={() => {
+                        trackReel(muted ? "unmute" : "mute")
+                        setMuted((m) => !m)
+                      }}
                       aria-label={muted ? t.reels.unmute : t.reels.mute}
                       className="absolute bottom-3 right-3 flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-black/55 text-paper backdrop-blur transition-colors hover:bg-black/80"
                     >
@@ -210,6 +226,7 @@ export default function Reels() {
             href={`https://www.instagram.com/reel/${REELS[active].id}/`}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={() => trackReel("open_instagram")}
             className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-2 text-sm font-medium text-paper transition-colors hover:border-white/30 hover:bg-white/10"
           >
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden className="text-brand-primary">

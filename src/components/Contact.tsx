@@ -1,4 +1,5 @@
 import { CONTACT_EMAIL, INSTAGRAM_URL, useLanguage, whatsappLink } from "../i18n"
+import { trackLead, trackSocial } from "../lib/analytics"
 import { WhatsAppIcon } from "./WhatsAppButton"
 
 type CardKey = "whatsapp" | "instagram" | "email"
@@ -79,6 +80,10 @@ export default function Contact() {
                 key={card.key}
                 href={hrefs[card.key]}
                 {...(external && { target: "_blank", rel: "noopener noreferrer" })}
+                onClick={() => {
+                  if (card.key === "instagram") trackSocial("instagram", "contact", INSTAGRAM_URL)
+                  else trackLead(card.key, "contact")
+                }}
                 className="group relative flex items-center gap-4 rounded-2xl border border-white/10 bg-white/3 p-4 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-white/25 hover:bg-white/6"
               >
                 <span

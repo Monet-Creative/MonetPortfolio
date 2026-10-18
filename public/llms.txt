@@ -1,0 +1,35 @@
+# Monet Creative
+
+> Monet Creative (Monet) é uma agência brasileira que cria sites, landing pages, convites digitais e sistemas sob medida, desenvolvidos com inteligência artificial. Landing pages ficam prontas em 3 a 7 dias úteis; o código e os acessos são do cliente. A agência também produz criativos (imagens para posts) e vídeos animados para Instagram.
+
+Atendimento em português (pt-BR) e inglês. Contato mais rápido: WhatsApp +55 83 92156-5651. O site é uma página única com seções ancoradas.
+
+## Site
+
+- [Início](https://monetportfolio.pages.dev/#inicio): proposta de valor — site no ar em dias, não meses
+- [Serviços](https://monetportfolio.pages.dev/#servicos): landing pages, eventos e convites com RSVP, sites institucionais, sistemas sob medida
+- [Portfólio](https://monetportfolio.pages.dev/#casos): Chá Revelação, Aviator, Gaming Code, Essenza Estética
+- [Instagram](https://monetportfolio.pages.dev/#instagram): vídeos do feed da agência
+- [Método](https://monetportfolio.pages.dev/#metodo): 4 etapas — alinhamento, layout, desenvolvimento, publicação
+- [FAQ](https://monetportfolio.pages.dev/#faq): prazos, custos, propriedade do código, suporte
+- [Preços](https://monetportfolio.pages.dev/#precos): tabela de valores em reais
+- [Contato](https://monetportfolio.pages.dev/#contato): WhatsApp, Instagram e e-mail
+
+## Preços (R$)
+
+- Landing Page Estática: R$ 649,90
+- Landing Page com Painel Administrativo: R$ 799,90
+- Criativos (imagens): 1 por R$ 35,00 · 3 por R$ 89,70 · 5 por R$ 129,50
+- Vídeos animados: 1 por R$ 60,00 · 3 por R$ 149,70 · 5 por R$ 229,50
+
+## Contato
+
+- WhatsApp: https://wa.me/5583921565651
+- E-mail: contato.monetcreative@gmail.com
+- Instagram: https://www.instagram.com/monetcreative_
+- GitHub: https://github.com/Monet-Creative
+
+## Optional
+
+- [Versão completa deste resumo (preços, FAQ, método, stack)](https://monetportfolio.pages.dev/llms-full.txt)
+- [Sitemap](https://monetportfolio.pages.dev/sitemap.xml)

@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useLanguage, whatsappLink } from "../i18n"
+import { track, trackLead } from "../lib/analytics"
 import { WhatsAppIcon } from "./WhatsAppButton"
 
 export default function Faq() {
@@ -22,6 +23,7 @@ export default function Faq() {
               href={whatsappLink(t.whatsapp.message)}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => trackLead("whatsapp", "faq")}
               className="mt-4 inline-flex items-center gap-2.5 rounded-full bg-paper py-1.5 pr-5 pl-1.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.03]"
             >
               <span className="flex h-7 w-7 items-center justify-center rounded-full bg-[#25D366]">
@@ -47,7 +49,10 @@ export default function Faq() {
                   id={`faq-btn-${i}`}
                   aria-expanded={isOpen}
                   aria-controls={`faq-panel-${i}`}
-                  onClick={() => setOpen(isOpen ? null : i)}
+                  onClick={() => {
+                    track("faq_toggle", { faq_question: item.q, faq_position: i + 1, faq_state: isOpen ? "close" : "open" })
+                    setOpen(isOpen ? null : i)
+                  }}
                   className="flex w-full items-center gap-4 px-5 py-4 text-left"
                 >
                   <span

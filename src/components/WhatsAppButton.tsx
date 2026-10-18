@@ -1,4 +1,5 @@
 import { useLanguage, whatsappLink } from "../i18n"
+import { trackLead } from "../lib/analytics"
 
 export function WhatsAppIcon({ size = 18 }: { size?: number }) {
   return (
@@ -16,6 +17,7 @@ export default function WhatsAppButton() {
       href={whatsappLink(t.whatsapp.message)}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={() => trackLead("whatsapp", "floating_button")}
       aria-label={t.whatsapp.floatingLabel}
       title={t.whatsapp.floatingLabel}
       className="fixed bottom-5 right-5 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-[#25D366] shadow-[0_8px_30px_-6px_rgba(37,211,102,0.6)] transition-transform hover:scale-110"

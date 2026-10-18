@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from "react"
 import { useLanguage, whatsappLink } from "../i18n"
+import { track, trackLead } from "../lib/analytics"
 import { WhatsAppIcon } from "./WhatsAppButton"
 
 type Tab = "images" | "videos" | "landing"
@@ -55,12 +56,23 @@ function CheckIcon() {
   )
 }
 
-function CtaButton({ href, label, highlighted }: { href: string; label: string; highlighted: boolean }) {
+function CtaButton({
+  href,
+  label,
+  highlighted,
+  onClick,
+}: {
+  href: string
+  label: string
+  highlighted: boolean
+  onClick: () => void
+}) {
   return (
     <a
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      onClick={onClick}
       className={`mt-6 flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold transition-all hover:scale-[1.03] ${
         highlighted
           ? "bg-linear-to-r from-brand-primary to-brand-secondary text-white shadow-[0_8px_30px_-8px_rgba(78,59,254,0.7)]"
@@ -126,7 +138,10 @@ export default function Pricing() {
                 role="tab"
                 type="button"
                 aria-selected={tab === key}
-                onClick={() => setTab(key)}
+                onClick={() => {
+                  if (key !== tab) track("pricing_tab_select", { pricing_tab: key })
+                  setTab(key)
+                }}
                 className={`whitespace-nowrap rounded-full px-3 py-2 text-[13px] font-semibold transition-colors sm:px-6 sm:text-sm ${
                   tab === key ? "bg-paper text-ink" : "text-paper/60 hover:text-paper"
                 }`}
@@ -170,7 +185,14 @@ export default function Pricing() {
                     {qty === 1 ? `1 ${singular}` : `${formatPrice(total / qty)} ${p.each}`}
                   </p>
                   <div className="flex-1" />
-                  <CtaButton href={order(item, price)} label={p.cta} highlighted={badge === "popular"} />
+                  <CtaButton
+                    href={order(item, price)}
+                    label={p.cta}
+                    highlighted={badge === "popular"}
+                    onClick={() =>
+                      trackLead("whatsapp", "pricing", { offer_name: `${tab}_${qty}`, value: total, currency: "BRL" })
+                    }
+                  />
                 </CardFrame>
               )
             })}
@@ -195,7 +217,18 @@ export default function Pricing() {
                     ))}
                   </ul>
                   <div className="flex-1" />
-                  <CtaButton href={order(item.title, price)} label={p.cta} highlighted={isAdmin} />
+                  <CtaButton
+                    href={order(item.title, price)}
+                    label={p.cta}
+                    highlighted={isAdmin}
+                    onClick={() =>
+                      trackLead("whatsapp", "pricing", {
+                        offer_name: `landing_${key}`,
+                        value: LANDING_PRICES[key],
+                        currency: "BRL",
+                      })
+                    }
+                  />
                 </CardFrame>
               )
             })}
