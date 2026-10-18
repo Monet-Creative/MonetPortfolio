@@ -66,9 +66,9 @@ function Site() {
         <Cases />
         <Reels />
         <Method />
-        <Faq />
         <Pricing />
         <Contact />
+        <Faq />
       </main>
       <Footer />
       <WhatsAppButton />

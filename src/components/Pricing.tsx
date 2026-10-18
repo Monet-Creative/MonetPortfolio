@@ -104,12 +104,12 @@ function CardFrame({ highlighted, badge, children }: { highlighted: boolean; bad
 export default function Pricing() {
   const { t } = useLanguage()
   const p = t.pricing
-  const [tab, setTab] = useState<Tab>("images")
+  const [tab, setTab] = useState<Tab>("landing")
 
   const tabs: { key: Tab; label: string }[] = [
-    { key: "images", label: p.tabs.images },
-    { key: "videos", label: p.tabs.videos },
     { key: "landing", label: p.tabs.landing },
+    { key: "videos", label: p.tabs.videos },
+    { key: "images", label: p.tabs.images },
   ]
 
   return (

@@ -46,6 +46,7 @@ type Dictionary = {
     titleLine2: string
     subtitle: string
     ctaPrimary: string
+    ctaBuy: string
     ctaSecondary: string
     highlights: string[]
   }
@@ -198,6 +199,7 @@ const dictionaries: Record<Lang, Dictionary> = {
       subtitle:
         "Sites, landing pages e sistemas sob medida, desenvolvidos com inteligência artificial para entregar mais rápido sem abrir mão da qualidade.",
       ctaPrimary: "Pedir orçamento no WhatsApp",
+      ctaBuy: "Comprar no site",
       ctaSecondary: "Ver projetos",
       highlights: ["Landing pages em 3 a 7 dias úteis", "100% responsivo", "Código e acessos são seus"],
     },
@@ -456,6 +458,7 @@ const dictionaries: Record<Lang, Dictionary> = {
       subtitle:
         "Websites, landing pages and custom systems, built with artificial intelligence to ship faster without cutting corners.",
       ctaPrimary: "Get a quote on WhatsApp",
+      ctaBuy: "Buy on the site",
       ctaSecondary: "See projects",
       highlights: ["Landing pages in 3 to 7 business days", "100% responsive", "You own the code and access"],
     },

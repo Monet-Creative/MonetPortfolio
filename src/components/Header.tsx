@@ -13,8 +13,8 @@ export default function Header() {
     { label: t.nav.servicos, href: "#servicos" },
     { label: t.nav.metodo, href: "#metodo" },
     { label: t.nav.portfolio, href: "#casos" },
-    { label: t.nav.faq, href: "#faq" },
     { label: t.nav.precos, href: "#precos" },
+    { label: t.nav.faq, href: "#faq" },
   ]
 
   return (

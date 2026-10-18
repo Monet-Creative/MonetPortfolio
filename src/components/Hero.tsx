@@ -43,23 +43,33 @@ export default function Hero() {
             </span>
             {t.hero.ctaPrimary}
           </a>
-          <a
-            href="#casos"
-            onClick={() => trackCta(t.hero.ctaSecondary, "hero", "#casos")}
-            className="group flex w-full items-center justify-center gap-2 rounded-full border border-white/15 bg-white/3 px-6 py-3 text-sm font-semibold text-paper backdrop-blur transition-colors hover:border-white/30 hover:bg-white/8 sm:w-auto"
-          >
-            {t.hero.ctaSecondary}
-            <svg
-              width="14"
-              height="14"
-              viewBox="0 0 24 24"
-              fill="none"
-              aria-hidden
-              className="transition-transform group-hover:translate-x-0.5"
+          {[
+            { label: t.hero.ctaBuy, href: "#precos", featured: true },
+            { label: t.hero.ctaSecondary, href: "#casos", featured: false },
+          ].map(({ label, href, featured }) => (
+            <a
+              key={href}
+              href={href}
+              onClick={() => trackCta(label, "hero", href)}
+              className={`group flex w-full items-center justify-center gap-2 rounded-full px-6 text-sm font-semibold sm:w-auto ${
+                featured
+                  ? "bg-linear-to-r from-brand-primary to-brand-secondary py-3.5 text-white shadow-[0_8px_40px_-8px_rgba(78,59,254,0.7)] transition-all hover:scale-[1.03] hover:shadow-[0_8px_50px_-6px_rgba(78,59,254,0.9)]"
+                  : "border border-white/15 bg-white/3 py-3 text-paper backdrop-blur transition-colors hover:border-white/30 hover:bg-white/8"
+              }`}
             >
-              <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-          </a>
+              {label}
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                aria-hidden
+                className="transition-transform group-hover:translate-x-0.5"
+              >
+                <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+            </a>
+          ))}
         </div>
 
         <ul className="mt-10 flex flex-wrap items-center justify-center gap-2">
