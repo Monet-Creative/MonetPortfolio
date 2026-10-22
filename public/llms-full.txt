@@ -46,7 +46,7 @@ Tecnologias: React, TypeScript, Tailwind, Node.js, Python, PostgreSQL, MySQL, Gi
 
 ## Portfólio
 
-- Chá Revelação — eventos (convite digital)
+- Extra Transportes — transporte e logística: https://extratransportes.com.br/
 - Aviator — aviação: https://lpaviatorinfo.pages.dev/
 - Gaming Code — jogos: https://gaming-code.vercel.app/pg-home.html
 - Essenza Estética — estética e saúde: https://essenzaestetica-lp.pages.dev/

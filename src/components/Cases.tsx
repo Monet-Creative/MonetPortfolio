@@ -1,15 +1,15 @@
 import { GITHUB_URL, useLanguage } from "../i18n"
 import { track, trackSocial } from "../lib/analytics"
-import chaRevelacaoImage from "../assets/ChaRevelacaoImage.jpg"
+import extraTransportesImage from "../assets/ExtraTransportesImage.jpg"
 import aviatorImage from "../assets/AviatorImage.jpg"
 import gamingCodeImage from "../assets/GamingCodeImage.jpg"
 import essenzaImage from "../assets/EssenzaImage.jpg"
 
-const CASE_IMAGES = [chaRevelacaoImage, aviatorImage, gamingCodeImage, essenzaImage]
+const CASE_IMAGES = [extraTransportesImage, aviatorImage, gamingCodeImage, essenzaImage]
 
 // Projects without a public URL render as non-clickable cards.
 const CASE_LINKS: (string | undefined)[] = [
-  undefined,
+  "https://extratransportes.com.br/",
   "https://lpaviatorinfo.pages.dev/",
   "https://gaming-code.vercel.app/pg-home.html",
   "https://essenzaestetica-lp.pages.dev/",

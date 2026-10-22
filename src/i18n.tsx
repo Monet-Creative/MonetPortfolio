@@ -289,7 +289,7 @@ const dictionaries: Record<Lang, Dictionary> = {
       subtitle: "Alguns dos sites e páginas que já colocamos no ar.",
       link: "Veja mais no GitHub →",
       items: [
-        { title: "Chá Revelação", tag: "Eventos" },
+        { title: "Extra Transportes", tag: "Transporte e Logística" },
         { title: "Aviator", tag: "Aviação" },
         { title: "Gaming Code", tag: "Jogos" },
         { title: "Essenza Estética", tag: "Estética e Saúde" },
@@ -558,7 +558,7 @@ const dictionaries: Record<Lang, Dictionary> = {
       subtitle: "Some of the websites and pages we've already shipped.",
       link: "See more on GitHub →",
       items: [
-        { title: "Gender Reveal", tag: "Events" },
+        { title: "Extra Transportes", tag: "Transport & Logistics" },
         { title: "Aviator", tag: "Aviation" },
         { title: "Gaming Code", tag: "Games" },
         { title: "Essenza Estética", tag: "Aesthetics & Health" },
